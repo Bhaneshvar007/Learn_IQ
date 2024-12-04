@@ -44,7 +44,7 @@ const NavBar = () => {
                     <p className='bg-[#2d2f31]  rounded p-[11px] text-white cursor-pointer'><TbWorld className='text-xl font-semibold' /></p>
                 </nav>
             </div>
-        </div>
+        </div >
     )
 }
 
