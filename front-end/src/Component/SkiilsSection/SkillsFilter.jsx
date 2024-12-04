@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Filter01 from "./Filter01";
+import Tabs from "./Tabs";
 
 const SkillsFilter = () => {
     const [activeTab, setActiveTab] = useState("Data Science");
@@ -24,20 +25,7 @@ const SkillsFilter = () => {
                 </p>
 
                 {/* Tabs */}
-                <div className="flex space-x-4 overflow-x-auto border-b pb-2">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab}
-                            className={`py-2 px-4 text-sm ${activeTab === tab
-                                ? "border-b-2 border-black text-black font-semibold"
-                                : "text-gray-500 hover:text-black"
-                                }`}
-                            onClick={() => setActiveTab(tab)}
-                        >
-                            {tab}
-                        </button>
-                    ))}
-                </div>
+                <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
 
                 {/* Skills Card */}
