@@ -1,7 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios';
 const SignUp = () => {
+    let data = {
+        username: '',
+        email: '',
+        password: '',
+    }
+
+    let [input, setInput] = useState(data);
+
+    function inputHandler(e) {
+        e.preventDefault();
+        let { name, value } = e.target;
+        setInput({ ...input, [name]: value });
+    }
+
+    async function submitHandler(e) {
+        e.preventDefault();
+        // console.log(input);
+        try {
+            let res = await axios.post('http://localhost:3000/api/signup', input)
+            alert(res.data)
+        } catch (error) {
+            console.error('Error during signup:', error);
+            alert('Signup failed. Please try again.');
+        }
+    }
+
+
+
     return (
         <div className="flex items-center justify-center h-scree">
             <div className=" p-8 pt-12 flex gap-20 max-w-5xl w-full mb-10">
@@ -26,6 +54,8 @@ const SignUp = () => {
 
                             <input
                                 type="text"
+                                name='username' value={input.username}
+                                onChange={inputHandler}
                                 placeholder="Enter your name"
                                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
                             />
@@ -33,8 +63,10 @@ const SignUp = () => {
                         <div>
 
                             <input
-                                type="  "
+                                type="email"
                                 id="email"
+                                name='email' value={input.email}
+                                onChange={inputHandler}
                                 placeholder="Enter your email"
                                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
                             />
@@ -43,6 +75,8 @@ const SignUp = () => {
 
                             <input
                                 type="password"
+                                name='password' value={input.password}
+                                onChange={inputHandler}
                                 placeholder="Enter your password"
                                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
                             />
@@ -62,6 +96,7 @@ const SignUp = () => {
                         </div>
                         <button
                             type="submit"
+                            onClick={submitHandler}
                             className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
                         >
                             Sign up
@@ -130,6 +165,7 @@ const SignUp = () => {
             </div>
         </div>
     )
+
 }
 
 export default SignUp

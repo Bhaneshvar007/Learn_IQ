@@ -1,7 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+    let data = {
+        email: '',
+        password: '',
+    }
+
+    let [input, setInput] = useState(data);
+    let usenavigate = useNavigate()
+
+
+    async function inputHandler(e) {
+        e.preventDefault();
+        let { name, value } = e.target;
+        setInput({ ...input, [name]: value });
+    }
+
+    async function submitHandler(e) {
+        e.preventDefault();
+        // console.log(input);
+
+        try {
+            let res = await axios.post('http://localhost:3000/api/login', input)
+            alert(res.data);
+            usenavigate('/signup')
+        } catch (error) {
+            console.error('Error during signup:', error);
+            alert('Signup failed. Please try again.');
+        }
+
+    }
+
+
     return (
         <div className="flex items-center justify-center h-scree">
             <div className=" p-8 pt-12 flex gap-20 max-w-5xl w-full mb-10">
@@ -23,22 +56,27 @@ const Login = () => {
                     </h2>
                     <form className="space-y-4">
                         <div>
-                            <label
-                                htmlFor="Email"
-
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Email
-                            </label>
                             <input
                                 type="email"
                                 id="Email"
+                                name="email" value={input.email}
+                                onChange={inputHandler}
                                 placeholder="Enter your email"
+                                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
+                            />
+                        </div>
+                        <div>
+                            <input
+                                type="password"
+                                name="password" value={input.password}
+                                onChange={inputHandler}
+                                placeholder="Enter your password"
                                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
                             />
                         </div>
                         <button
                             className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
+                            onClick={submitHandler}
                         >
                             Log in
                         </button>
@@ -67,8 +105,8 @@ const Login = () => {
                             </button>
                             <button className="bg-gray-100 p-2 rounded-full">
                                 <img
-                                    src="https://img.icons8.com/ios-filled/50/000000/mac-os.png"
-                                    alt="Apple"
+                                    src="https://static.vecteezy.com/system/resources/previews/020/964/377/non_2x/gmail-mail-icon-for-web-design-free-png.png"
+                                    alt="email"
                                     className="h-6 w-6"
                                 />
                             </button>

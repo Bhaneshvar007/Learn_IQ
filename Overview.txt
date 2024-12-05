@@ -1,0 +1,89 @@
+########## Project Overview ###########
+
+
+// backend/
+// ├── config/
+// │   └── db.js
+// │   └── cloudStorage.js       # Cloud upload configuration (e.g., AWS S3)
+// ├── controllers/
+// │   ├── authController.js     # User auth logic
+// │   ├── userController.js     # User dashboard logic
+// │   ├── courseController.js   # Course creation and management
+// │   ├── adminController.js    # Admin-specific logic
+// │   ├── paymentController.js  # Payment and invoices
+// │   ├── reviewController.js   # Ratings and reviews
+// ├── models/
+// │   ├── userModel.js
+// │   ├── courseModel.js
+// │   ├── reviewModel.js        # Ratings and reviews schema
+// │   ├── progressModel.js      # User progress tracking schema
+// │   ├── orderModel.js         # Payment/order schema
+// ├── routes/
+// │   ├── authRoutes.js         # Authentication routes
+// │   ├── userRoutes.js         # User dashboard routes
+// │   ├── courseRoutes.js       # Course-related routes
+// │   ├── adminRoutes.js        # Admin management routes
+// │   ├── paymentRoutes.js      # Payment integration routes
+// │   ├── reviewRoutes.js       # Reviews routes
+// ├── middlewares/
+// │   ├── authMiddleware.js     # Authentication and role-based access
+// │   ├── errorMiddleware.js    # Global error handler
+// ├── utils/
+// │   ├── generateToken.js      # JWT utility
+// │   ├── sendEmail.js          # Email sending utility
+// │   ├── generateInvoice.js    # Invoice generation utility
+// ├── .env                      # Environment variables
+// ├── server.js                 # Entry point
+// └── package.json              # Dependencies
+
+
+
+
+// Features Required
+// User Authentication and Authorization
+
+// User Registration (Student, Instructor, Admin roles)
+// Login/Logout
+// Password Reset via Email
+// Course Management
+
+// Course Creation (Instructors)
+// Course Approval (Admins)
+// Course Search and Filters (Category, Level, Language)
+// Free and Paid Courses
+// User Dashboard
+
+// Enrolled Courses List
+// Progress Tracking (Completed Sections)
+// Wishlist Management
+// Admin Dashboard
+
+// Manage Users
+// Approve/Reject Courses
+// View Revenue Analytics
+// Payment Integration
+
+// Purchase Courses
+// Generate Invoices
+// Refunds (if applicable)
+// Ratings and Reviews
+
+// Add Reviews for Courses
+// View Average Ratings
+// Course Content
+
+// Add Video Lectures (Upload to Cloud)
+// Add Quizzes and Assignments
+// Downloadable Resources (PDFs, PPTs)
+// Messaging System
+
+// Instructor-Student Communication
+// Support Tickets
+// Analytics
+
+// Course Analytics for Instructors
+// Revenue Analytics for Admin
+ Notifications
+
+ Email Notifications for Important Updates
+ Push Notifications for App Users
