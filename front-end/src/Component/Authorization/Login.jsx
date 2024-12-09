@@ -24,9 +24,16 @@ const Login = () => {
         // console.log(input);
 
         try {
-            let res = await axios.post('http://localhost:3000/api/login', input)
-            alert(res.data);
-            usenavigate('/signup')
+            let res = await axios.post('http://localhost:3000/api/login', input);
+            if (res.data.token) {
+                localStorage.setItem('token', res.data.token);
+                alert("User Login Sucessfully !!");
+            }
+
+            else {
+                alert(res.data);
+                usenavigate('/signup')
+            }
         } catch (error) {
             console.error('Error during signup:', error);
             alert('Signup failed. Please try again.');

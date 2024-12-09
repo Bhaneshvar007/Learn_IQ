@@ -8,7 +8,6 @@ const Home = () => {
         <div>
             <HomeSlide />
             <Skills />
-
         </div>
     )
 }

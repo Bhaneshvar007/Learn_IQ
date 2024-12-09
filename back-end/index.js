@@ -17,6 +17,7 @@ env.config();
 
 const signup = require('./Routes/signup')
 const login = require('./Routes/login')
+const forget = require('./Routes/forget')
 
 const port = process.env.PORT;
 
@@ -35,9 +36,11 @@ app.use('/api', signup);
 app.use('/api', login);
 
 
+//paswword passwprd
+app.use('/api' , forget)
 
 app.get('/', (req, res) => {
     res.send("Hello content !!")
 });
 
-app.listen(port || 8000, console.log(`Server is running on port no ${port}`));
+app.listen(port , console.log(`Server is running on port no ${port}`));

@@ -14,10 +14,15 @@ const HomeSlide = () => {
             description: "Learn from real-world experts for as low as ₹449. Sale ends tonight!"
         },
         {
-            image: "https://img-c.udemycdn.com/notices/web_carousel_slide/image/e6cc1a30-2dec-4dc5-b0f2-c5b656909d5b.jpg",
+            image: "https://img-c.udemycdn.com/notices/web_carousel_slide/image/10ca89f6-811b-400e-983b-32c5cd76725a.jpg",
             title: "Take your career to the next level",
             description: "Prep for industry-recognized certifications by solving real-world challenges and earn badges along the way."
-        }
+        },
+        {
+            image: "https://img-c.udemycdn.com/notices/featured_carousel_slide/image/2b4dae04-f107-4ae6-8188-a57ca45897cb.jpg",
+            title: "Powered by community",
+            description: "Trust ratings and reviews to make a smarter choice. Get started with our top-rated courses."
+        },
     ];
 
     // State to keep track of the current slide index
@@ -35,8 +40,8 @@ const HomeSlide = () => {
 
     // Auto-slide effect using useEffect
     useEffect(() => {
-        const interval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
-        return () => clearInterval(interval); // Cleanup the interval on component unmount
+        const interval = setInterval(nextSlide, 4000); 
+        return () => clearInterval(interval); 
     }, []);
 
     return (

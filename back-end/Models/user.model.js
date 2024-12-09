@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 let userSchema = mongoose.Schema({
     username: {
         type: String,
-        required: true,
-     },
+
+    },
     email: {
         type: String,
         required: true,
         unique: true,
-        uppercase: true
+        lowercase: true
     },
     password: {
         type: String,
@@ -19,7 +19,9 @@ let userSchema = mongoose.Schema({
         type: String,
         enum: ["user", "admin", "instructor"],
         default: "user"
-    }
+    },
+    resetToken: String,
+    resetTokenExpiry: Date,
 })
 
 

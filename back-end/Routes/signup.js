@@ -27,8 +27,7 @@ router.post('/signup', async (req, res) => {
         let token = jwt.sign({ email, role }, process.env.TOKEN, { expiresIn: '1h' });
         console.log(token);
 
-        res.send({token});
-        // res.send('Acc created Sucessfully !!')
+        res.send('Acc created Sucessfully !!')
     }
 
 })

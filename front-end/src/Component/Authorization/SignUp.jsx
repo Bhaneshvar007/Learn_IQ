@@ -21,7 +21,16 @@ const SignUp = () => {
         // console.log(input);
         try {
             let res = await axios.post('http://localhost:3000/api/signup', input)
-            alert(res.data)
+            if (res.data.token) {
+                localStorage.setItem('token', res.data.token);
+                alert("User Login Sucessfully !!");
+            }
+
+            else {
+                alert(res.data)
+            }
+            // console.log(res);
+
         } catch (error) {
             console.error('Error during signup:', error);
             alert('Signup failed. Please try again.');
