@@ -16,8 +16,7 @@ router.post('/signup', async (req, res) => {
     }
     else {
         let hash = await bcrypt.hash(password, 10);
-        console.log(hash);
-
+ 
         let newUser = new UserModel({
             username,
             email,

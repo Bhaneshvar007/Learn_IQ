@@ -7,7 +7,9 @@ const Login = () => {
     let data = {
         email: '',
         password: '',
+        email: '',
     }
+
 
     let [input, setInput] = useState(data);
     let usenavigate = useNavigate()
@@ -19,6 +21,7 @@ const Login = () => {
         setInput({ ...input, [name]: value });
     }
 
+    // Handle login submission
     async function submitHandler(e) {
         e.preventDefault();
         // console.log(input);
@@ -28,18 +31,43 @@ const Login = () => {
             if (res.data.token) {
                 localStorage.setItem('token', res.data.token);
                 alert("User Login Sucessfully !!");
+                
             }
 
             else {
                 alert(res.data);
-                usenavigate('/signup')
+                // usenavigate('/signup');
             }
         } catch (error) {
             console.error('Error during signup:', error);
             alert('Signup failed. Please try again.');
         }
 
+        console.log(input.email);
+
+
     }
+
+
+
+
+    // Handle forgot password submission
+    const handleForgotPassword = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:3000/api/forgot-password", {
+                email: input.email,
+            });
+            alert("Password reset email sent. Check your inbox.");
+        } catch (error) {
+            alert("Failed to send password reset email. Try again.");
+            console.error(error);
+        }
+    };
+
+
+    // State for forget password;
+    let [forget, setForget] = useState(true);
 
 
     return (
@@ -61,39 +89,89 @@ const Login = () => {
                     <h2 className="text-2xl font-bold text-gray-800 mb-6">
                         Log in to continue your learning journey
                     </h2>
-                    <form className="space-y-4">
+
+
+                    {!forget && (
                         <div>
-                            <input
-                                type="email"
-                                id="Email"
-                                name="email" value={input.email}
-                                onChange={inputHandler}
-                                placeholder="Enter your email"
-                                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
-                            />
+                            <form className="flex justify-between flex-col mt-4 gap-5" >
+                                <div>
+                                    <input
+                                        type="email"
+                                        name="email" value={input.email}
+                                        onChange={inputHandler}
+                                        placeholder="Enter your recovery email"
+                                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
+                                    />
+                                </div>
+                                <button
+                                    className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
+                                    onClick={handleForgotPassword}
+                                >
+                                    Continue
+                                </button>
+                            </form>
+
+
+                            <div className="flex justify-between mt-4 "
+                            >
+                                <p className="text-sm text-purple-600 hover:underline cursor-pointer "
+                                    onClick={() => setForget(true)}
+                                >
+                                    Back to Login
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <input
-                                type="password"
-                                name="password" value={input.password}
-                                onChange={inputHandler}
-                                placeholder="Enter your password"
-                                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
-                            />
-                        </div>
-                        <button
-                            className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
-                            onClick={submitHandler}
+
+
+                    )}
+
+                    {forget && (
+                        <form className="space-y-4" >
+                            <div>
+                                <input
+                                    type="email"
+                                    id="Email"
+                                    name="email" value={input.email}
+                                    onChange={inputHandler}
+                                    placeholder="Enter your email"
+                                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    type="password"
+                                    name="password" value={input.password}
+                                    onChange={inputHandler}
+                                    placeholder="Enter your password"
+                                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
+                                />
+                            </div>
+                            <button
+                                className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
+                                onClick={submitHandler}
+                            >
+                                Log in
+                            </button>
+                        </form>
+                    )}
+
+
+                    <div className="flex justify-between mt-4 "
+                        style={forget ? { visibility: "visible" } : { visibility: "hidden" }}
+
+                    >
+                        <p className="text-sm text-purple-600 hover:underline cursor-pointer "
+                            onClick={() => setForget(false)}
                         >
-                            Log in
-                        </button>
-                    </form>
-                    <div className="flex justify-between items-center mt-4">
-                        <p className="text-sm text-purple-600 hover:underline">
                             Forgot Password
                         </p>
+
+
                     </div>
-                    <div className="mt-6">
+
+
+                    {/* Others Login  */}
+                    {/* <div className="mt-6">
                         <p className="text-gray-600 text-center">Other log in options</p>
                         <div className="flex items-center justify-center mt-2 space-x-4">
                             <button className="bg-gray-100 p-2 rounded-full">
@@ -118,9 +196,9 @@ const Login = () => {
                                 />
                             </button>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="flex items-center justify-center bg-gray-100 py-4 mt-10">
+                    <div className="flex items-center justify-center bg-gray-100 py-4 mt-10" style={forget ? { visibility: "visible" } : { visibility: "hidden" }}>
                         <p className="text-gray-600">
                             Don't have an account?{" "}
                             <Link to={'/signup'}

@@ -1,10 +1,13 @@
-let express = require('express')
+let express = require('express');
 let User = require('../Models/user.model')
 let router = express.Router()
+const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 let { sendEmail } = require('../Utils/sendEmail');
 
 
+
+// Sending a link in our gmail
 router.post('/forgot-password', async (req, res) => {
     const { email } = req.body;
     try {
@@ -32,6 +35,9 @@ router.post('/forgot-password', async (req, res) => {
         res.status(500).send('Error sending password reset email: ' + error.message);
     }
 });
+
+
+
 
 module.exports = router
 

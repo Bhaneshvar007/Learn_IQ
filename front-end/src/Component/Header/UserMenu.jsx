@@ -7,6 +7,12 @@ const UserMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+
+  function tokenSet() {
+    localStorage.setItem('token', '');
+    console.log(localStorage.getItem('token'), "ksjvnslkd");
+  }
+
   return (
     <div className="relative">
       {/* Profile Button */}
@@ -44,8 +50,8 @@ const UserMenu = () => {
               <span>Language</span>
               <span className="text-gray-500">English 🌐</span>
             </li>
-            <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer">Public profile</li>
             <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer">Edit profile</li>
+            <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer" onClick={tokenSet}>Log out</li>
           </ul>
         </div>
       )}

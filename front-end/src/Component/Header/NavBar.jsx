@@ -16,8 +16,8 @@ const NavBar = () => {
 
 
     let token = localStorage.getItem('token');
-    console.log(token , "hello token");
-    
+    // console.log(token , "hello token");
+
 
 
 
@@ -52,29 +52,39 @@ const NavBar = () => {
                     </li>
                 </nav>
 
-                <div className='flex items-center gap-3'>
-                    <Link to={'/login'}>
-                        <button className='border border-zinc-600 rounded py-[8px] w-[80px] text-sm'>Log in</button>
-                    </Link>
-                    <Link to={'/signup'}>
-                        <button className='bg-[#2d2f31] w-[90px] rounded py-[8px] text-white text-sm'>Sign up</button>
-                    </Link>
-                    <p className='bg-[#2d2f31] rounded p-[11px] text-white cursor-pointer'>
-                        <TbWorld className='text-xl font-semibold' />
-                    </p>
-                </div>
 
-                  {/* <div className='flex items-center gap-5 ml-4'>
-                    <Link className=' py-[8px] text-2xl'>
-                        <FaRegHeart />
-                    </Link>
-                    <Link className='rounded p-[11px] cursor-pointer text-[25px] font-bold'>
-                        <Notifications />
-                    </Link>
-                    <p className=''>
-                        <UserMenu />
-                    </p>
-                </div> */}
+                {!token && (
+                    <div className='flex items-center gap-3'>
+                        <Link to={'/login'}>
+                            <button className='border border-zinc-600 rounded py-[8px] w-[80px] text-sm'>Log in</button>
+                        </Link>
+                        <Link to={'/signup'}>
+                            <button className='bg-[#2d2f31] w-[90px] rounded py-[8px] text-white text-sm'>Sign up</button>
+                        </Link>
+                        <p className='bg-[#2d2f31] rounded p-[11px] text-white cursor-pointer'>
+                            <TbWorld className='text-xl font-semibold' />
+                        </p>
+                    </div>
+                )}
+
+                {token && (
+                    <div className='flex items-center gap-5 ml-4'>
+                        <Link className=' py-[8px] text-2xl'>
+                            <FaRegHeart />
+                        </Link>
+                        <Link className='rounded p-[11px] cursor-pointer text-[25px] font-bold'>
+                            <Notifications />
+                        </Link>
+                        <p className=''>
+                            <UserMenu />
+                        </p>
+                    </div>
+                )}
+
+
+
+
+
 
 
             </div>
