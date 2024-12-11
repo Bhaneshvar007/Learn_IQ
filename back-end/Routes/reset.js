@@ -8,17 +8,19 @@ const bcrypt = require('bcrypt');
 
 router.post('/reset-password/:token', async (req, res) => {
     const { token } = req.params;
-    const { newPassword } = req.body;
+    const { password } = req.body;
+
+    console.log(password);
+    
 
 
     try {
-
         const user = await User.findOne({
             resetToken: token,
             resetTokenExpiry: { $gt: Date.now() },
         });
 
-        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
         user.password = hashedPassword;
         user.resetToken = undefined;
         user.resetTokenExpiry = undefined;
@@ -31,6 +33,4 @@ router.post('/reset-password/:token', async (req, res) => {
     }
 })
 
-
-
-module.exports = router;
+module.exports = router;    

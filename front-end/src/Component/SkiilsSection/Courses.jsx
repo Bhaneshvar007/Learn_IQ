@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 
 const Courses = () => {
     const courses = [
@@ -103,6 +104,12 @@ const Courses = () => {
             image: "https://i.ytimg.com/vi/H4jPgMLfn40/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDyfY4bGZ_nlzEC6IzUMOiiOvguOA",
         },
     ];
+
+
+    useEffect(async () => {
+        let res = await axios.get('http://localhost:3000/api/get-course');
+        console.log(res);
+    }, [])
 
 
     return (

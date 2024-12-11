@@ -7,7 +7,6 @@ const Login = () => {
     let data = {
         email: '',
         password: '',
-        email: '',
     }
 
 
@@ -31,7 +30,7 @@ const Login = () => {
             if (res.data.token) {
                 localStorage.setItem('token', res.data.token);
                 alert("User Login Sucessfully !!");
-                
+
             }
 
             else {
@@ -43,7 +42,7 @@ const Login = () => {
             alert('Signup failed. Please try again.');
         }
 
-        console.log(input.email);
+        // console.log(input.email);
 
 
     }

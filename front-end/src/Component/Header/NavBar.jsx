@@ -4,8 +4,6 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { TbWorld } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import { FaRegHeart } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
-import { IoNotificationsOffOutline } from "react-icons/io5";
 import UserMenu from './UserMenu';
 import Notifications from './Notifications';
 
@@ -44,7 +42,9 @@ const NavBar = () => {
 
                 <nav className='hidden lg:flex gap-5 items-center'>
                     <li className='list-none text-zinc-700 cursor-pointer'>Plans & Pricing</li>
-                    <li className='list-none text-zinc-700 cursor-pointer'>Udemy Business</li>
+                    <Link to='/udemy-business'>
+                        <li className='list-none text-zinc-700 cursor-pointer'>Udemy Business</li>
+                    </Link>
                     <li className='list-none text-zinc-700 cursor-pointer'>Teach on Udemy</li>
                     <li className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'>
                         <MdOutlineShoppingCart className='' />

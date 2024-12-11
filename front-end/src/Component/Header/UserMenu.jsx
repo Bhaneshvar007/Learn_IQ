@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const UserMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,11 +7,16 @@ const UserMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  let [isToken, setIsToken] = useState(localStorage.getItem('token'));
 
-  function tokenSet() {
+  const handleLogout = () => {
     localStorage.setItem('token', '');
-    console.log(localStorage.getItem('token'), "ksjvnslkd");
-  }
+    setIsToken('');// Update the state to reflect logout immediatel
+    setIsMenuOpen(false)
+  };
+
+
+
 
   return (
     <div className="relative">
@@ -51,7 +56,9 @@ const UserMenu = () => {
               <span className="text-gray-500">English 🌐</span>
             </li>
             <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer">Edit profile</li>
-            <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer" onClick={tokenSet}>Log out</li>
+            <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer"
+              onClick={handleLogout}
+            >Log out</li>
           </ul>
         </div>
       )}
