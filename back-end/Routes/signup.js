@@ -16,17 +16,18 @@ router.post('/signup', async (req, res) => {
     }
     else {
         let hash = await bcrypt.hash(password, 10);
- 
+
         let newUser = new UserModel({
             username,
             email,
             password: hash,
+            role
         });
         await newUser.save();
         let token = jwt.sign({ email, role }, process.env.TOKEN, { expiresIn: '1h' });
-        console.log(token);
+        // console.log(token);
 
-        res.send('Acc created Sucessfully !!')
+        res.send(`Acc created Sucessfully !!  token :  ${token}`)
     }
 
 })

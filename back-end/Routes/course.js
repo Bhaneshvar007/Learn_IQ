@@ -1,9 +1,10 @@
 const express = require('express');
 const courseSchemaModel = require('../Models/courseSchema.model');
+const checkRoleFn = require('../Middlewares/checkrole');
 const router = express.Router();
 
 
-router.post('/course', async (req, res) => {
+router.post('/course', checkRoleFn(['admin', 'instructor']), async (req, res) => {
     let course = req.body;
 
     // console.log(course);
@@ -23,9 +24,6 @@ router.post('/course', async (req, res) => {
     await newCourse.save();
     // console.log('data saved');
     res.send("sucess");
-
-
-
 
 });
 
