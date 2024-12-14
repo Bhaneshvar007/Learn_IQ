@@ -2,14 +2,34 @@
 
 <img src="/overview.png">
 
+
+
+
+---
+
+## **Features**
+### **User Authentication and Authorization**
+- User roles: Student, Instructor, Admin.
+- Login/Logout functionality.
+- Password reset via email.
+
+...
+
+## **Setup and Installation**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Bhaneshvar007/UdamyClone.git
+   cd UdamyClone
+
+
 backend/
-├── config/
-│   ├── db.js                # Database connection setup
-│   └── cloudStorage.js      # Cloud upload configuration (e.g., AWS S3)
-├── controllers/
-│   ├── authController.js     # User authentication and authorization logic
-│   ├── userController.js     # User dashboard logic
-│   ├── courseController.js   # Course creation and management
+# ├── config/
+# │   ├── db.js                # Database connection setup
+# │   └── cloudStorage.js      # Cloud upload configuration (e.g., AWS S3)
+# ├── controllers/
+# │   ├── authController.js     # User authentication and authorization logic
+# │   ├── userController.js     # User dashboard logic
+# │   ├── courseController.js   # Course creation and management
 │   ├── adminController.js    # Admin-specific logic
 │   ├── paymentController.js  # Payment and invoice handling
 │   ├── reviewController.js   # Ratings and reviews
