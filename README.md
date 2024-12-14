@@ -13,7 +13,7 @@
 - Login/Logout functionality.
 - Password reset via email.
 
-...
+
 
 ## **Setup and Installation**
 1. Clone the repository:
@@ -21,6 +21,44 @@
    git clone https://github.com/Bhaneshvar007/UdamyClone.git
    cd UdamyClone
    npm install
+
+2. Course Management
+Instructors can create and manage courses.
+Admins can approve or reject courses.
+Search and filter options by category, level, and language.
+Support for both free and paid courses.
+
+3. User Dashboard
+View enrolled courses and track progress.
+Manage a wishlist of desired courses.
+
+4. Admin Dashboard
+Manage users and courses.
+View revenue analytics and approve/reject courses.
+
+5. Payment Integration
+Purchase courses securely.
+Generate invoices for payments.
+Process refunds (if applicable).
+
+6. Ratings and Reviews
+Add and view reviews for courses.
+Display average ratings for courses.
+
+7. Course Content
+Upload video lectures, quizzes, assignments, and downloadable resources.
+
+8. Messaging System
+Communication between instructors and students.
+Raise support tickets for queries.
+
+9. Analytics
+Course performance analytics for instructors.
+Revenue analytics for admins.
+
+10. Notifications
+Email notifications for important updates.
+Push notifications for app users.
 
 
 # **Project Structure**
