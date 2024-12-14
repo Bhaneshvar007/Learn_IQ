@@ -9,15 +9,20 @@ let { sendEmail } = require('../Utils/sendEmail');
 
 // Sending a link in our gmail
 router.post('/forgot-password', async (req, res) => {
-    const { email } = req.body;
+
+    const { email } = req.body; // getting the email from the user for forgoting the password
+
+
     try {
-        const user = await User.findOne({ email });
+
+        const user = await User.findOne({ email }); // find the user is exists or not
+
         if (!user) {
             return res.status(404).send('User not found');
         }
 
 
-        const resetToken = crypto.randomBytes(20).toString('hex');
+        const resetToken = crypto.randomBytes(20).toString('hex'); // ganearting the temprary token for url
         user.resetToken = resetToken;
         user.resetTokenExpiry = Date.now() + 3600000;
         await user.save();
@@ -25,9 +30,6 @@ router.post('/forgot-password', async (req, res) => {
 
         // const resetUrl = `${req.protocol}://${req.get('host')}/api/reset-password/${resetToken}`;
         const resetUrl = `http://localhost:5173/api/reset-password/${resetToken}`;
-
-
-        // console.log(`http://localhost:5173/api/reset-password/${resetToken}`);
         
 
         await sendEmail(

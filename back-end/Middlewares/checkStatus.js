@@ -1,8 +1,8 @@
 let express = require('express');
- let jwt = require('jsonwebtoken')
+let jwt = require('jsonwebtoken')
 
 
-function checkRoleFn(role) {
+function checkAdminStatus(role) {
     return (req, res, next) => {
         let token = req.headers.authorization;
 
@@ -12,7 +12,8 @@ function checkRoleFn(role) {
         else {
             let deCodedToken = jwt.verify(token, process.env.TOKEN);
 
-            if (!role.includes(deCodedToken.role)) {
+
+            if (deCodedToken.role != role) {
                 return res.send('Access denieddd ||')
             }
             else {
@@ -24,4 +25,4 @@ function checkRoleFn(role) {
 
 
 
-module.exports = checkRoleFn
+module.exports = checkAdminStatus

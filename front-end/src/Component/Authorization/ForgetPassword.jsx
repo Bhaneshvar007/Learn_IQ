@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 const ForgetPassword = () => {
     const [isOpen, setIsOpen] = useState(true);
     let navigate = useNavigate();
+
+    
     const { token } = useParams();
 
 
