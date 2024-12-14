@@ -20,16 +20,20 @@
    ```bash
    git clone https://github.com/Bhaneshvar007/UdamyClone.git
    cd UdamyClone
+   npm install
 
+
+# **Project Structure**
 
 backend/
-# ├── config/
-# │   ├── db.js                # Database connection setup
-# │   └── cloudStorage.js      # Cloud upload configuration (e.g., AWS S3)
-# ├── controllers/
-# │   ├── authController.js     # User authentication and authorization logic
-# │   ├── userController.js     # User dashboard logic
-# │   ├── courseController.js   # Course creation and management
+```
+├── config/
+│   ├── db.js                # Database connection setup
+│   └── cloudStorage.js      # Cloud upload configuration (e.g., AWS S3)
+├── controllers/
+│   ├── authController.js     # User authentication and authorization logic
+│   ├── userController.js     # User dashboard logic
+│   ├── courseController.js   # Course creation and management
 │   ├── adminController.js    # Admin-specific logic
 │   ├── paymentController.js  # Payment and invoice handling
 │   ├── reviewController.js   # Ratings and reviews
@@ -56,4 +60,4 @@ backend/
 ├── .env                      # Environment variables
 ├── server.js                 # Application entry point
 └── package.json              # Dependencies
-
+```
