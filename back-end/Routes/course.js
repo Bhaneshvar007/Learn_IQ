@@ -1,10 +1,10 @@
 const express = require('express');
 const courseSchemaModel = require('../Models/courseSchema.model');
-const checkRoleFn = require('../Middlewares/checkrole');
+const { checkRoleFn, isProtect } = require('../Middlewares/checkrole');
 const router = express.Router();
 
 
-router.post('/course', checkRoleFn(['admin', 'instructor']), async (req, res) => {
+router.post('/course', isProtect, checkRoleFn(['admin', 'instructor']), async (req, res) => {
     let course = req.body;
 
     // console.log(course);
@@ -15,7 +15,7 @@ router.post('/course', checkRoleFn(['admin', 'instructor']), async (req, res) =>
         category: course.category,
         price: course.price,
         level: course.level,
-        language: course.language,
+        language: course.language,   
         status: course.status,
         video: course.video,
         resources: course.resources

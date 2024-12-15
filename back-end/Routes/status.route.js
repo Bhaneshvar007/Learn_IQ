@@ -1,7 +1,7 @@
 let express = require('express');
 let mongoose = require('mongoose');
 const courseSchemaModel = require('../Models/courseSchema.model');
-const checkAdminStatus = require('../Middlewares/checkStatus');
+const { checkAdminStatus } = require('../Middlewares/checkrole');
 let router = express.Router();
 
 // Accept

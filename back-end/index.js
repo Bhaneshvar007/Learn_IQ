@@ -27,6 +27,7 @@ const forget = require('./Routes/forget');
 const reset = require('./Routes/reset');
 const course = require('./Routes/course');
 const status = require('./Routes/status.route');
+const review = require('./Routes/review');
 
 
 
@@ -57,7 +58,12 @@ app.use('/api', course);
 
 
 // Check status
-app.use('/api' , status)
+app.use('/api', status)
+
+
+
+// For review course
+app.use('/api', review)
 
 
 
