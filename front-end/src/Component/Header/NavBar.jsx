@@ -24,7 +24,7 @@ const NavBar = () => {
             <div className='flex items-center justify-between gap-5 border-b-2 h-[80px]'>
 
                 <Link to={'/'} className='w-[91px] h-[40px] scale-150 pt-1'>
-                    <img src="https://www.ballinamorecs.ie/wp-content/uploads/2014/07/elearning-logo.png" alt="Udemy Logo" />
+                    <img src="https://www.ballinamorecs.ie/wp-content/uploads/2014/07/elearning-logo.png" alt="Logo" />
                 </Link>
 
                 <div className='hidden lg:block cursor-pointer'>

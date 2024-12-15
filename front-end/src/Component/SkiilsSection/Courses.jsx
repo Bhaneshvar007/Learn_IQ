@@ -112,9 +112,8 @@ const Courses = () => {
         let res = await axios.get('http://localhost:3000/api/get-course');
         setCourses(res.data);
         // console.log(res.data);
-        console.log(courses);
     }, [])
-
+// 
 
     return (
         <div className="overflow-x-auto whitespace-nowrap p-4 bg-gray-100 max-w-[1400px] mx-auto">

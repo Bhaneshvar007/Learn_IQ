@@ -14,9 +14,32 @@ const Filter01 = ({ activeTab }) => {
             { name: "Statistics", learners: "1M+" },
             { name: "Natural Language Processing (NLP)", learners: "790,700+" },
         ],
+        "IT Certifications": [
+            { name: "Web Development", learners: "4M+" },
+            { name: "DataBase ", learners: "1M+" },
+
+        ],
+        "Leadership": [
+            { name: "Leadership-01", learners: "3M+" },
+            { name: "Leadership-02", learners: "3M+" },
+
+        ],
+        "Web Development": [
+            { name: "FrontEnd", learners: "3M+" },
+            { name: "BackEnd", learners: "3M+" },
+
+        ],
+        "Communication": [
+            { name: "Verbal", learners: "3M+" },
+            { name: "Non Verbal", learners: "7M+" },
+
+        ],
+        "Business Analytics & Intelligence": [
+            { name: "Deep Learning", learners: "2M+" },
+            { name: "Artificial Intelligence (AI)", learners: "3M+" },
+            { name: "Statistics", learners: "1M+" },
+        ],
     };
-
-
 
 
     return (
