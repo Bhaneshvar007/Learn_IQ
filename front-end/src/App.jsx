@@ -20,7 +20,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/api/reset-password/:token' element={<ForgetPassword />} />
-        <Route path='/udemy-business' element={<UdemyBusiness />} />
+        <Route path='/e-business' element={<UdemyBusiness />} />
       </Routes>
       <Footer />
     </>

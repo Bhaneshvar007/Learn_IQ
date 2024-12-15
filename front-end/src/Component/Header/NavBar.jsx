@@ -23,8 +23,8 @@ const NavBar = () => {
         <div className='max-w-[1400px] mx-auto px-4'>
             <div className='flex items-center justify-between gap-5 border-b-2 h-[80px]'>
 
-                <Link to={'/'} className='w-[91px] h-[34px]'>
-                    <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Udemy Logo" />
+                <Link to={'/'} className='w-[91px] h-[40px] scale-150 pt-1'>
+                    <img src="https://www.ballinamorecs.ie/wp-content/uploads/2014/07/elearning-logo.png" alt="Udemy Logo" />
                 </Link>
 
                 <div className='hidden lg:block cursor-pointer'>
@@ -42,10 +42,10 @@ const NavBar = () => {
 
                 <nav className='hidden lg:flex gap-5 items-center'>
                     <li className='list-none text-zinc-700 cursor-pointer'>Plans & Pricing</li>
-                    <Link to='/udemy-business'>
-                        <li className='list-none text-zinc-700 cursor-pointer'>Udemy Business</li>
+                    <Link to='/e-business'>
+                        <li className='list-none text-zinc-700 cursor-pointer'>E-Business</li>
                     </Link>
-                    <li className='list-none text-zinc-700 cursor-pointer'>Teach on Udemy</li>
+                    <li className='list-none text-zinc-700 cursor-pointer'>Teach on e-learn</li>
                     <li className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'>
                         <MdOutlineShoppingCart className='' />
                         <sup className='bg-purple-700 text-center text-white font-bold text-sm px-[5px] py-0 rounded-full absolute left-6' >0</sup>

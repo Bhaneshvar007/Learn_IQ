@@ -8,7 +8,7 @@ const Footer = () => {
             <div className='max-w-[1400px] mx-auto'>
                 <div className="container mx-auto px-4 flex items-center justify-between gap-5 mb-10">
                     <p className="text-center text-white font-medium ">
-                        Top companies choose <span className="text-purple-500">Udemy Business</span> to build in-demand career skills.
+                        Top companies choose <span className="text-purple-500">E-Learn Business</span> to build in-demand career skills.
                     </p>
                     <div className="flex justify-center items-center space-x-8">
                         {/* Company logos */}
@@ -26,8 +26,8 @@ const Footer = () => {
                 <div className="container mx-auto px-4 mt-8">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
                         <ul>
-                            <li className="mb-2 duration-500 cursor-pointer hover:text-white">Udemy Business</li>
-                            <li className="mb-2 duration-500 cursor-pointer hover:text-white">Teach on Udemy</li>
+                            <li className="mb-2 duration-500 cursor-pointer hover:text-white">E-Business</li>
+                            <li className="mb-2 duration-500 cursor-pointer hover:text-white">Teach on E-learn</li>
                             <li className="mb-2 duration-500 cursor-pointer hover:text-white">Get the app</li>
                             <li className="mb-2 duration-500 cursor-pointer hover:text-white">About us</li>
                             <li className="mb-2 duration-500 cursor-pointer hover:text-white">Contact us</li>
@@ -57,11 +57,11 @@ const Footer = () => {
 
                 {/* Bottom Section */}
                 <div className="container mx-auto px-4 mt-8 flex flex-col md:flex-row justify-between items-center text-sm">
-                    <div className='w-[91px] h-[34px]'>
-                        <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg" alt="udamy" />
+                    <div className='w-[80px]  rounded-full' title='E-Learning'>
+                        <img src="https://t3.ftcdn.net/jpg/05/07/66/58/360_F_507665856_dFXIKJJ4SwROG0df8GNPBhqsZV44p6jn.jpg" alt="e-learn" className='rounded-full' />
                     </div>
-                    <p className="mt-4 md:mt-0 text-gray-300">
-                        © 2024 Udemy, Inc.
+                    <p className="mt-4 md:mt-0 text-gray-300 duration-500 hover:underline">
+                        © 2024 E-Learning, Inc.
                     </p>
                 </div>
             </div>
