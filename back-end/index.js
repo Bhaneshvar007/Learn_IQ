@@ -28,6 +28,7 @@ const reset = require('./Routes/reset');
 const course = require('./Routes/course');
 const status = require('./Routes/status.route');
 const review = require('./Routes/review');
+const findUser = require('./Routes/findAllUser');
 
 
 
@@ -61,9 +62,12 @@ app.use('/api', course);
 app.use('/api', status)
 
 
-
 // For review course
-app.use('/api', review)
+app.use('/api', review);
+
+
+// fins the all user
+app.use('/api', findUser)
 
 
 

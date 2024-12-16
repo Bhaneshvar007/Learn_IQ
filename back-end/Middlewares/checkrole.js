@@ -36,8 +36,6 @@ function checkRoleFn(role) {
             req.user = await User.findById(deCodedToken.id).select('-password');
             console.log(deCodedToken, "fecode");
 
-            console.log(req.user, "poijhgvc");
-
             if (!role.includes(deCodedToken.role)) {
                 return res.send('Access denieddd ||')
             }
