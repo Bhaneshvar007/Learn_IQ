@@ -27,7 +27,7 @@ router.post("/approve-course", checkAdminStatus('admin'), async (req, res) => {
 router.post("/reject-course", checkAdminStatus('admin'), async (req, res) => {
 
     let { _id } = req.body;
-    console.log(_id);
+    // console.log(_id);
 
 
     const course = await courseSchemaModel.findById({ _id });

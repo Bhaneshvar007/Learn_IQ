@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SkillsFilter from './SkillsFilter'
 import Courses from './Courses'
 
 const Skills = () => {
+
+    const [activeTab, setActiveTab] = useState("All");
+
+
     return (
         <div>
-            <SkillsFilter />
-            <Courses />
+            <SkillsFilter activeTab={activeTab} setActiveTab={setActiveTab} />
+            <Courses activeTab={activeTab} />
         </div>
     )
 }

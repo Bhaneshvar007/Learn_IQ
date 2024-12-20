@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import Filter01 from "./Filter01";
+import React, { useContext, useState } from "react";
 import Tabs from "./Tabs";
+import Context from "../../../context";
 
-const SkillsFilter = () => {
-    const [activeTab, setActiveTab] = useState("Data Science");
+const SkillsFilter = ({ activeTab, setActiveTab }) => {
 
-    const tabs = [
-        "Data Science",
-        "IT Certifications",
-        "Leadership",
-        "Web Development",
-        "Communication",
-        "Business Analytics & Intelligence",
-    ];
+
+    let { courseData } = useContext(Context);
+    const tabs = ["All", ...new Set(courseData.map((course) => course.category))];
+
+
+
 
 
 
@@ -26,11 +23,6 @@ const SkillsFilter = () => {
 
                 {/* Tabs */}
                 <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-
-
-                {/* Skills Card */}
-                <Filter01 activeTab={activeTab} />
-
             </div>
         </div>
     );

@@ -10,7 +10,7 @@ router.post('/reset-password/:token', async (req, res) => {
     const { token } = req.params;
     const { password } = req.body;
 
-    console.log(password);
+    // console.log(password);
     
 
 

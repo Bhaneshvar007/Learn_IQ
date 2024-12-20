@@ -17,6 +17,7 @@ router.post('/forgot-password', async (req, res) => {
 
         const user = await User.findOne({ email }); // find the user is exists or not
 
+
         if (!user) {
             return res.status(404).send('User not found');
         }
@@ -28,9 +29,11 @@ router.post('/forgot-password', async (req, res) => {
         await user.save();
 
 
+
+
         // const resetUrl = `${req.protocol}://${req.get('host')}/api/reset-password/${resetToken}`;
         const resetUrl = `http://localhost:5173/api/reset-password/${resetToken}`;
-        
+
 
         await sendEmail(
             user.email,

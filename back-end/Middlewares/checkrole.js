@@ -15,7 +15,7 @@ async function isProtect(req, res, next) {
     else {
         let deCodedToken = jwt.verify(token, process.env.TOKEN);
         req.user = await User.findById(deCodedToken.id).select('-password');
-        console.log(req.user);
+        // console.log(req.user);
 
         next();
 
@@ -34,7 +34,7 @@ function checkRoleFn(role) {
         else {
             let deCodedToken = jwt.verify(token, process.env.TOKEN);
             req.user = await User.findById(deCodedToken.id).select('-password');
-            console.log(deCodedToken, "fecode");
+            // console.log(deCodedToken, "fecode");
 
             if (!role.includes(deCodedToken.role)) {
                 return res.send('Access denieddd ||')
