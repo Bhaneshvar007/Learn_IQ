@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import Context from "../../../context";
 import CourseDesign from "./CourseDesign";
+import { Link } from "react-router-dom";
 
 const Courses = ({ activeTab }) => {
 
@@ -31,7 +32,9 @@ const Courses = ({ activeTab }) => {
 
             <div className="flex space-x-4">
                 {filteredCourses.map((course, index) => (
-                    <CourseDesign course={course} index={index} />
+                    <Link to='/course-detail'>
+                        <CourseDesign course={course} index={index} />
+                    </Link>
                 ))}
             </div>
         </div>

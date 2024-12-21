@@ -9,6 +9,7 @@ import Footer from './Component/Footer/Footer'
 import ForgetPassword from './Component/Authorization/ForgetPassword'
 import UdemyBusiness from './Component/Pages/UdemyBusiness'
 import CreateCourse from './Component/Pages/CourseCreation/CreateCourse'
+import Include_All_Course from './Component/SkiilsSection/AllCourseDetails/Include_All_Course'
 
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
 
         {/* Create a cprse */}
         <Route path='/create-course' element={<CreateCourse />} />
+
+
+        {/* All Course details */}
+        <Route path='/course-detail' element={<Include_All_Course />} />
       </Routes>
       <Footer />
     </>

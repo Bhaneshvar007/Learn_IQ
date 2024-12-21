@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className=" bg-[#1C1D1F] text-gray-400 py-8">
             {/* Top Section */}
-            <div className='max-w-[1400px] mx-auto'>
+            <div className='max-w-[1400px] mx-auto z-50'>
                 <div className="container mx-auto px-4 flex items-center justify-between gap-5 mb-10">
                     <p className="text-center text-white font-medium ">
                         Top companies choose <span className="text-purple-500">E-Learn Business</span> to build in-demand career skills.
