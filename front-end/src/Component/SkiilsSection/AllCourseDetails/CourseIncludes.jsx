@@ -37,7 +37,7 @@ const CourseIncludes = () => {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 };

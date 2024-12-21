@@ -30,7 +30,6 @@ const Login = () => {
             if (res.data.token) {
                 localStorage.setItem('token', res.data.token);
                 alert("User Login Sucessfully !!");
-
             }
 
             else {

@@ -44,9 +44,9 @@ const CourseDesign = ({ course, index }) => {
                     <span className="text-xs font-semibold text-white bg-[#F79B00] px-2 py-1 rounded">
                         {course.level}
                     </span>
-                    <span className="text-xs font-semibold text-white bg-blue-500 px-2 py-1 rounded">
+                    {/* <span className="text-xs font-semibold text-white bg-blue-500 px-2 py-1 rounded">
                         Add-to-Cart
-                    </span>
+                    </span> */}
                 </div>
 
             </div>

@@ -10,6 +10,8 @@ import ForgetPassword from './Component/Authorization/ForgetPassword'
 import UdemyBusiness from './Component/Pages/UdemyBusiness'
 import CreateCourse from './Component/Pages/CourseCreation/CreateCourse'
 import Include_All_Course from './Component/SkiilsSection/AllCourseDetails/Include_All_Course'
+import AddToCart from './Component/SkiilsSection/AddToCart'
+import PricingSubscraption from './Component/Pages/PricingSubscraption'
 
 
 function App() {
@@ -24,12 +26,18 @@ function App() {
         <Route path='/api/reset-password/:token' element={<ForgetPassword />} />
         <Route path='/e-business' element={<UdemyBusiness />} />
 
+        <Route path='/PricingSubscraption' element={<PricingSubscraption />} />
+
         {/* Create a cprse */}
         <Route path='/create-course' element={<CreateCourse />} />
 
 
         {/* All Course details */}
-        <Route path='/course-detail' element={<Include_All_Course />} />
+        <Route path='/course-detail/:id' element={<Include_All_Course />} />
+
+
+
+        <Route path='/add-cart' element={<AddToCart />} />
       </Routes>
       <Footer />
     </>

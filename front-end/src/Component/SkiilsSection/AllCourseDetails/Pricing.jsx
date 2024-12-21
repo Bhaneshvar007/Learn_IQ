@@ -1,18 +1,35 @@
 // Import React and Tailwind CSS
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../../../../context';
+import { useParams } from 'react-router-dom';
 
 const Pricing = () => {
+
+    let { id } = useParams();
+
+    let { courseData, cartData, setCartData } = useContext(Context);
+
+    let filterData = courseData.find((data, ind) => {
+        return ind == id;
+    });
+
+    console.log(filterData);
+
+
+
+
     return (
         <div className="min-h-screen  flex items-center justify-center z-[-1]">
             <div className="bg-white shadow-md rounded-lg max-w-[400px] p-6">
                 {/* Course Header */}
                 <div className="flex flex-col items-center w-full">
                     <video
-                        id="videoPlayer"
-                        src="https://mp4-c.udemycdn.com/2023-06-30_15-51-14-79001edcc2f174ba4eb545042d57cc25/2/WebHD_720p.mp4?Expires=1734713286&Signature=HHJNh4neDxY5N9mnVp-P4oto-LvOwTlZ0ahkbobDcFm2XQVutDc8PkehjxPQgxQLUgTZ1X4-LDfsUPQfudGViiNSGNP3T-pza97bhP1eGoOzjHrvVDuJvd2oGYkVlqLl1A6FZFt3azYHhEjqoSn4vCeYr1asJjJBmYudkr7EhpZw1CbXtRlyBPYAkHgtfCLCz4XYDO6I5vEYfgk~62k7~NKXxim7Kexb4QnC~lN6~~qzk4vzCeKWK~pT-Gk58eLL0nq5r9ugWLu8dCk~cjmfyJdmWJ9s~GTpyZ94QEura1yE5SLZZaBs1O9XONtMbn5gjG~j1IMBysZ~dbhmZo98tw__&Key-Pair-Id=K3MG148K9RIRF4"
+                        // src={filterData.video}
+                        src='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
                         className="w-full h-64 rounded-lg"
                         controls
                     />
+                    {/* <img src={filterData?.video} alt="" /> */}
                 </div>
 
 
@@ -37,9 +54,11 @@ const Pricing = () => {
                         <div className="w-full border-b border-gray-300"></div>
                     </div>
 
-                    <div className="text-center">
-                        <p className="text-2xl font-semibold">₹2,699</p>
-                        <button className="w-full border border-purple-600 text-purple-600 py-3 rounded-lg mt-2 hover:bg-purple-50">
+                    <div className="">
+                        <p className="text-2xl font-semibold text-gray-700">Price : ${filterData?.price}</p>
+                        <button className="w-full border border-purple-600 text-purple-600 py-3 rounded-lg mt-2 hover:bg-purple-50"
+                            onClick={() => setCartData([...new Set([...cartData, filterData])])}
+                        >
                             Add to cart
                         </button>
                     </div>
@@ -49,7 +68,7 @@ const Pricing = () => {
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

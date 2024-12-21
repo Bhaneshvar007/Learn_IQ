@@ -6,6 +6,7 @@ const Context = createContext();
 
 function ContextProvider({ children }) {
     const [courseData, setCourses] = useState([]);
+    const [cartData, setCartData] = useState([])
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -21,7 +22,7 @@ function ContextProvider({ children }) {
     }, []);
 
     return (
-        <Context.Provider value={{ courseData, setCourses }}>
+        <Context.Provider value={{ courseData, setCourses, cartData, setCartData }}>
             {children}
         </Context.Provider>
     );

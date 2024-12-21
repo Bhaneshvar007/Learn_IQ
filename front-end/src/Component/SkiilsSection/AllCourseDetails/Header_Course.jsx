@@ -9,7 +9,7 @@ const Header_Course = () => {
                 <p className="mt-2">Created by Julian Melanson, Benza Maman, Leap Year Learning</p>
                 <p className="mt-2">Last updated 12/2024</p>
             </div>
-            <div className="fixed top-6 right-6">
+            <div className="fixed top-20 right-6">
                 <Pricing />
             </div>
         </div>
