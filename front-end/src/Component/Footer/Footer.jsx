@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className=" bg-[#1C1D1F] text-gray-400 py-8">
             {/* Top Section */}
-            <div className='max-w-[1400px] mx-auto z-50'>
+            <div className='max-w-[1400px] mx-auto '>
                 <div className="container mx-auto px-4 flex items-center justify-between gap-5 mb-10">
                     <p className="text-center text-white font-medium ">
                         Top companies choose <span className="text-purple-500">E-Learn Business</span> to build in-demand career skills.
@@ -46,12 +46,12 @@ const Footer = () => {
                             <li className="mb-2 duration-500 cursor-pointer hover:text-white">Sitemap</li>
                             <li className="mb-2 duration-500 cursor-pointer hover:text-white">Accessibility statement</li>
                         </ul>
-                        <div className="flex items-center space-x-2 absolute right-16">
+                        {/* <div className="flex items-center space-x-2 absolute right-16">
                             <TbWorld className="text-2xl" />
                             <button className="border border-gray-400 px-5 py-2 rounded duration-500 hover:border-white">
                                 English
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

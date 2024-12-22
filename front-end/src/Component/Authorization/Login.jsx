@@ -27,8 +27,10 @@ const Login = () => {
 
         try {
             let res = await axios.post('http://localhost:3000/api/login', input);
+
             if (res.data.token) {
                 localStorage.setItem('token', res.data.token);
+                getData();
                 alert("User Login Sucessfully !!");
             }
 
@@ -45,6 +47,20 @@ const Login = () => {
 
 
     }
+
+
+
+
+
+
+
+    const getData = async () => {
+
+        const response = await axios.get('http://localhost:3000/api/login');
+        console.log(response);
+
+    };
+
 
 
 

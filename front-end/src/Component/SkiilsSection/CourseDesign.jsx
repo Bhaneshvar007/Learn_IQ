@@ -6,12 +6,11 @@ const CourseDesign = ({ course, index }) => {
             key={index}
             className="min-w-[280px] w-[280px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden cursor-pointer"
         >
-            <img
-                src={course.video}
-                alt="Course Thumbnail"
-                className="w-full h-36 object-cover"
-            />
-
+            <video
+                src={course.videos}
+                controls
+                className="w-full h-40 object-cover">
+            </video>
             <div className="p-4">
                 <h3 className="text-sm font-semibold mb-2 text-gray-800">
                     {course.title}

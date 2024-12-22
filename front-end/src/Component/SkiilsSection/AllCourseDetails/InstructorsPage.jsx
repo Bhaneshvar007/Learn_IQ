@@ -25,7 +25,7 @@ const InstructorsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
-            <div className="max-w-4xl ml-5 bg-white shadow-md rounded-lg p-6">
+            <div className="max-w-[850px] ml-5 bg-white shadow-md rounded-lg p-6">
                 {/* Header Section */}
                 <h2 className="text-2xl font-bold mb-6">Instructors</h2>
 

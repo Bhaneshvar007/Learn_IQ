@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import Context from "../../../../context";
+import { useParams } from "react-router-dom";
 
 const CourseContent = () => {
+
+
+    let { id } = useParams();
+
+    let { courseData } = useContext(Context);
+    let filterData = courseData.find((data, ind) => {
+        return ind == id;
+    });
+
+
     const sections = [
         {
-            title: "ChatGPT Fundamentals",
+            title: `${filterData?.title} Fundamentals`,
             lectures: "5 lectures • 47 min",
             details: [
-                { lectureTitle: "Introduction to ChatGPT", duration: "3 min" },
-                { lectureTitle: "History of ChatGPT", duration: "5 min" },
-                { lectureTitle: "Key Features of ChatGPT", duration: "10 min" },
-                { lectureTitle: "Using ChatGPT Effectively", duration: "15 min" },
-                { lectureTitle: "Best Practices", duration: "14 min" },
+                { lectureTitle: `Introduction to ${filterData?.title}`, duration: "3 min" },
+                { lectureTitle: `History of ${filterData?.title}`, duration: "5 min" },
+                { lectureTitle: `Key Features of ${filterData?.title}`, duration: "10 min" },
+                { lectureTitle: `Using ${filterData?.title} Effectively`, duration: "15 min" },
+                { lectureTitle: `Best Practices`, duration: "14 min" },
             ],
         },
         {
@@ -25,56 +37,35 @@ const CourseContent = () => {
             ],
         },
         {
-            title: "AI Ethics and Safety",
+            title: `${filterData?.title} Ethics and Safety`,
             lectures: "5 lectures • 40 min",
             details: [
-                { lectureTitle: "Understanding AI Ethics", duration: "5 min" },
-                { lectureTitle: "Privacy Concerns in AI", duration: "6 min" },
-                { lectureTitle: "Bias in AI Models", duration: "7 min" },
-                { lectureTitle: "AI Regulation and Governance", duration: "8 min" },
-                { lectureTitle: "Building Ethical AI Solutions", duration: "14 min" },
+                { lectureTitle: `Understanding ${filterData?.title} Ethics`, duration: "5 min" },
+                { lectureTitle: `Privacy Concerns in ${filterData?.title}`, duration: "6 min" },
+                { lectureTitle: `Bias in ${filterData?.title} Models`, duration: "7 min" },
+                { lectureTitle: `${filterData?.title} Regulation and Governance`, duration: "8 min" },
+                { lectureTitle: `Building Ethical ${filterData?.title} Solutions`, duration: "14 min" },
             ],
         },
         {
-            title: "Advanced Natural Language Processing",
-            lectures: "4 lectures • 2 hrs 15 min",
-            details: [
-                { lectureTitle: "Overview of NLP", duration: "8 min" },
-                { lectureTitle: "Tokenization and Stemming", duration: "10 min" },
-                { lectureTitle: "Word Embeddings and Word2Vec", duration: "12 min" },
-                { lectureTitle: "Fine-Tuning NLP Models", duration: "40 min" },
-            ],
-        },
-        {
-            title: "Building AI-Powered Applications",
+            title: `Building ${filterData?.title} Applications`,
             lectures: "5 lectures • 1 hr 30 min",
             details: [
-                { lectureTitle: "Introduction to AI Applications", duration: "5 min" },
-                { lectureTitle: "Integrating AI APIs", duration: "10 min" },
+                { lectureTitle: "Introduction to  Applications", duration: "5 min" },
+                { lectureTitle: "Integrating APIs", duration: "10 min" },
                 { lectureTitle: "Creating Chatbots with AI", duration: "15 min" },
-                { lectureTitle: "Deploying AI Models", duration: "30 min" },
-                { lectureTitle: "Scaling AI-Powered Solutions", duration: "30 min" },
+                { lectureTitle: `Scaling ${filterData?.title} Solutions`, duration: "30 min" },
             ],
         },
+
         {
-            title: "Machine Learning Basics",
-            lectures: "5 lectures • 1 hr 20 min",
-            details: [
-                { lectureTitle: "What is Machine Learning?", duration: "6 min" },
-                { lectureTitle: "Types of Machine Learning", duration: "12 min" },
-                { lectureTitle: "Supervised Learning Techniques", duration: "15 min" },
-                { lectureTitle: "Unsupervised Learning Techniques", duration: "20 min" },
-                { lectureTitle: "Building ML Models", duration: "27 min" },
-            ],
-        },
-        {
-            title: "AI in Real-World Use Cases",
+            title: `${filterData?.title} Real-World Use Cases`,
             lectures: "4 lectures • 50 min",
             details: [
-                { lectureTitle: "AI in Healthcare", duration: "7 min" },
-                { lectureTitle: "AI in Finance", duration: "8 min" },
-                { lectureTitle: "AI in Retail", duration: "10 min" },
-                { lectureTitle: "AI in Education", duration: "15 min" },
+                { lectureTitle: `${filterData?.title} in Healthcare`, duration: "7 min" },
+                { lectureTitle: `${filterData?.title} in Finance`, duration: "8 min" },
+                { lectureTitle: `${filterData?.title} in Retail`, duration: "10 min" },
+                { lectureTitle: `${filterData?.title} in Education`, duration: "15 min" },
             ],
         },
     ];

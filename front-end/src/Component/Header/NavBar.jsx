@@ -25,7 +25,7 @@ const NavBar = () => {
 
     return (
         <div className='max-w-[1400px] mx-auto px-4'>
-            <div className='flex items-center justify-between gap-5 border-b-2 h-[80px]'>
+            <div className='flex items-center justify-between gap-5 border-b-2 h-[80px] z-50'>
 
                 <Link to={'/'} className='w-[91px] h-[40px] scale-150 pt-1'>
                     <img src="https://www.ballinamorecs.ie/wp-content/uploads/2014/07/elearning-logo.png" alt="Logo" />
@@ -51,7 +51,10 @@ const NavBar = () => {
                     <Link to='/e-business'>
                         <li className='list-none text-zinc-700 cursor-pointer'>E-Business</li>
                     </Link>
-                    <li className='list-none text-zinc-700 cursor-pointer'>Teach on e-learn</li>
+
+                    <Link to='/tech-on-page'>
+                        <li className='list-none text-zinc-700 cursor-pointer'>Teach on e-learn</li>
+                    </Link>
                     <Link to='/add-cart' className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'>
                         <MdOutlineShoppingCart className='' />
                         <sup className='bg-purple-700 text-center text-white font-bold text-sm px-[5px] py-0 rounded-full absolute left-6' >{cartData.length}</sup>
@@ -75,12 +78,12 @@ const NavBar = () => {
 
                 {token && (
                     <div className='flex items-center gap-5 ml-4'>
-                        <Link className=' py-[8px] text-2xl'>
+                        {/* <Link className=' py-[8px] text-2xl'>
                             <FaRegHeart />
-                        </Link>
-                        <Link className='rounded p-[11px] cursor-pointer text-[25px] font-bold'>
+                        </Link> */}
+                        {/* <Link className='rounded p-[11px] cursor-pointer text-[25px] font-bold'>
                             <Notifications />
-                        </Link>
+                        </Link> */}
                         <p className=''>
                             <UserMenu />
                         </p>

@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/course', isProtect, checkRoleFn(['admin', 'instructor']), async (req, res) => {
     let course = req.body;
 
-    // console.log(course);
+    console.log(course.video);
 
     try {
         let newCourse = new courseSchemaModel({
@@ -20,7 +20,7 @@ router.post('/course', isProtect, checkRoleFn(['admin', 'instructor']), async (r
             level: course.level,
             language: course.language,
             status: course.status,
-            video: course.video,
+            videos: course.videos,
             resources: course.resources
         });
 

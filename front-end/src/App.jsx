@@ -12,6 +12,7 @@ import CreateCourse from './Component/Pages/CourseCreation/CreateCourse'
 import Include_All_Course from './Component/SkiilsSection/AllCourseDetails/Include_All_Course'
 import AddToCart from './Component/SkiilsSection/AddToCart'
 import PricingSubscraption from './Component/Pages/PricingSubscraption'
+import TechOnPage from './Component/Pages/TechOnPage'
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
         <Route path='/e-business' element={<UdemyBusiness />} />
 
         <Route path='/PricingSubscraption' element={<PricingSubscraption />} />
+
+        <Route path='/tech-on-page' element={<TechOnPage />} />
 
         {/* Create a cprse */}
         <Route path='/create-course' element={<CreateCourse />} />

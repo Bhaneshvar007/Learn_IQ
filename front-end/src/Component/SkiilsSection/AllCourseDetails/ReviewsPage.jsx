@@ -35,7 +35,7 @@ const ReviewsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 -mt-28">
-            <div className="max-w-4xl ml-5 bg-white shadow-md rounded-lg p-6">
+            <div className="max-w-[880px] ml-5 bg-white shadow-md rounded-lg p-6">
                 {/* Header Section */}
                 <div className="flex items-center justify-between mb-4 ">
                     <h1 className="text-xl font-semibold flex items-center">

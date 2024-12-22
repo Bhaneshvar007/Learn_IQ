@@ -1,22 +1,37 @@
+import { useParams } from "react-router-dom";
+import Context from "../../../../context";
+import { useContext } from "react";
+
 const CourseIncludes = () => {
+
+
+    let { id } = useParams();
+
+    let { courseData } = useContext(Context);
+    let filterData = courseData.find((data, ind) => {
+        return ind == id;
+    });
+
+
     const topics = [
-        "ChatGPT: Create content, synthesize information, and learn faster than ever with effective prompt engineering!",
-        "Productivity: Achieve your goals faster with ChatGPT, manage your time, prioritize tasks, and create an optimized daily schedule!",
-        "Soft Skills: Improve your communication, leadership, problem-solving, and social skills with personalized ChatGPT feedback!",
-        "AI Video Tools: Create an AI avatar that transforms scripts into presentations and quickly generate social media content!",
-        "AI Writing Tools: Automate writing tasks, generate effective copy, and integrate with Google Sheets/Excel!",
-        "Branding: Develop a visual identity, design logos, and generate content to establish a strong online presence!",
-        "Business: Streamline your workflow, automate repetitive tasks, and gain insights that help you make data-driven decisions for your business!",
-        "Midjourney: Use prompts, parameters, and modifiers to create amazing images that showcase your personal style and creativity!",
-        "ChatGPT: Turn your creativity into paid work, generate fresh ideas, reach new audiences, and scale your projects!",
-        "Marketing: Generate targeted content with ChatGPT, capitalize on trends, create ads, newsletters, and media campaigns!",
-        "AI Voice Tools: Easily create AI-generated speech for any use case and even clone your own voice entirely!",
-        "AI Photo Tools: Add motion to images, dynamically enhance image aesthetics, and create custom images in bulk!",
-        "AI Music Tools: Create unique compositions for any types of video and save time with a streamlined creative process.",
-        "DALL-E 3: Create amazing photos from prompts, fill in or remove elements of images using inpainting and outpainting techniques!",
-        "Multimodal: Combine multiple AI tools to create immersive and engaging content that would have previously taken an entire team to create!",
-        "Coding: Combine the power of ChatGPT with programming fundamentals, algorithms, debugging, and documentation!",
+        `${filterData?.title}: Master the art of content creation, synthesize complex information, and enhance your learning experience with effective prompt engineering!`,
+        "Productivity: Learn to optimize your time, set goals, and develop an efficient schedule to achieve more in less time!",
+        "Soft Skills: Develop your communication, leadership, problem-solving, and interpersonal skills with personalized feedback and growth strategies!",
+        `${filterData?.title}: Create impactful presentations, turn ideas into engaging content, and automate your creative processes for faster results!`,
+        `${filterData?.category}: Automate repetitive tasks, generate high-quality copy, and integrate seamlessly with tools like Google Sheets/Excel for efficient workflow!`,
+        "Branding: Build a memorable brand identity, design visuals, and craft content that resonates with your audience to establish a strong online presence!",
+        "Business: Improve decision-making with data-driven insights, streamline your operations, and automate key processes to enhance business performance!",
+        "Midjourney: Harness the power of creative prompts, parameters, and modifiers to generate stunning visuals that capture your unique style!",
+        `${filterData?.description}: Transform your creativity into valuable projects, generate innovative ideas, and scale your work efficiently with AI-powered assistance!`,
+        "Marketing: Create targeted content, craft compelling campaigns, and capitalize on trends to boost engagement and drive results!",
+        `${filterData?.title}: Generate high-quality AI-driven speech for various applications, from voiceovers to personalized messages, and even clone your voice!`,
+        `${filterData?.title}: Enhance and animate your images dynamically, create custom visuals at scale, and bring your creative ideas to life with ease!`,
+        `${filterData?.title}: Streamline video creation with AI tools, craft unique compositions for all types of projects, and save time with an optimized creative workflow!`,
+        `DALL-E 3: Create visually striking images from text prompts, customize visuals with inpainting and outpainting, and push the boundaries of your creative work!`,
+        `Multimodal: Combine multiple AI tools to craft rich, immersive content, and deliver high-quality results that would typically require a full team to produce!`,
+        "Coding: Unlock the power of AI in coding by combining programming fundamentals with AI-driven solutions for faster debugging, algorithm creation, and documentation!"
     ];
+
 
     return (
 
@@ -24,13 +39,13 @@ const CourseIncludes = () => {
             <div className="min-h-screen bg-gray-100 p-6">
                 <div className="max-w-4xl bg-white shadow-md rounded-lg p-6">
                     {/* Header Section */}
-                    <h2 className="text-2xl font-bold mb-4">What you'll learn</h2>
+                    <h2 className="text-2xl font-bold mb-4">What you'll learn in {filterData?.title}</h2>
 
                     {/* Topics Section */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                         {topics.map((topic, index) => (
                             <div key={index} className="flex items-start space-x-2">
-                                <span className="text-green-500">✓</span>
+                                <span className="text-green-500 font-semibold">✓</span>
                                 <p className="text-gray-700 text-sm">{topic}</p>
                             </div>
                         ))}

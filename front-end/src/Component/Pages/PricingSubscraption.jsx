@@ -1,4 +1,6 @@
 import React from "react";
+import TestimonialSection from "./TestimonialSection";
+import img from './testonomial.png'
 
 const PricingSubscraption = () => {
     return (
@@ -71,6 +73,10 @@ const PricingSubscraption = () => {
                     </div>
                 </div>
             </div>
+
+            <img src={img} className="mt-8"/>
+
+            <TestimonialSection />
         </div>
     );
 };

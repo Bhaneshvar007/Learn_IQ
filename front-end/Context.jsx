@@ -21,6 +21,14 @@ function ContextProvider({ children }) {
         fetchCourses();
     }, []);
 
+
+
+
+
+
+
+
+
     return (
         <Context.Provider value={{ courseData, setCourses, cartData, setCartData }}>
             {children}

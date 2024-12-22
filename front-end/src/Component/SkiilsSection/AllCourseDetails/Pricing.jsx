@@ -1,21 +1,12 @@
 // Import React and Tailwind CSS
 import React, { useContext } from 'react';
 import Context from '../../../../context';
-import { useParams } from 'react-router-dom';
 
-const Pricing = () => {
-
-    let { id } = useParams();
-
-    let { courseData, cartData, setCartData } = useContext(Context);
-
-    let filterData = courseData.find((data, ind) => {
-        return ind == id;
-    });
-
-    console.log(filterData);
+const Pricing = ({ filterData }) => {
 
 
+
+    let { cartData, setCartData } = useContext(Context);
 
 
     return (
@@ -24,12 +15,10 @@ const Pricing = () => {
                 {/* Course Header */}
                 <div className="flex flex-col items-center w-full">
                     <video
-                        // src={filterData.video}
-                        src='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+                        src={filterData?.videos}
                         className="w-full h-64 rounded-lg"
                         controls
                     />
-                    {/* <img src={filterData?.video} alt="" /> */}
                 </div>
 
 
