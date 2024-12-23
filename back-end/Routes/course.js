@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/course', isProtect, checkRoleFn(['admin', 'instructor']), async (req, res) => {
     let course = req.body;
 
-    console.log(course.video);
+    // console.log(course, "lidhsf");
 
     try {
         let newCourse = new courseSchemaModel({

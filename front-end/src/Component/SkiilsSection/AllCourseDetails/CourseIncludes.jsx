@@ -22,7 +22,7 @@ const CourseIncludes = () => {
         "Branding: Build a memorable brand identity, design visuals, and craft content that resonates with your audience to establish a strong online presence!",
         "Business: Improve decision-making with data-driven insights, streamline your operations, and automate key processes to enhance business performance!",
         "Midjourney: Harness the power of creative prompts, parameters, and modifiers to generate stunning visuals that capture your unique style!",
-        `${filterData?.description}: Transform your creativity into valuable projects, generate innovative ideas, and scale your work efficiently with AI-powered assistance!`,
+        `${filterData?.category}: Transform your creativity into valuable projects, generate innovative ideas, and scale your work efficiently with AI-powered assistance!`,
         "Marketing: Create targeted content, craft compelling campaigns, and capitalize on trends to boost engagement and drive results!",
         `${filterData?.title}: Generate high-quality AI-driven speech for various applications, from voiceovers to personalized messages, and even clone your voice!`,
         `${filterData?.title}: Enhance and animate your images dynamically, create custom visuals at scale, and bring your creative ideas to life with ease!`,

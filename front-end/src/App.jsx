@@ -8,7 +8,7 @@ import NavBar from './Component/Header/NavBar'
 import Footer from './Component/Footer/Footer'
 import ForgetPassword from './Component/Authorization/ForgetPassword'
 import UdemyBusiness from './Component/Pages/UdemyBusiness'
-import CreateCourse from './Component/Pages/CourseCreation/CreateCourse'
+import CreateCourse from './Component/Admin_workSection/CourseCreation/CreateCourse'
 import Include_All_Course from './Component/SkiilsSection/AllCourseDetails/Include_All_Course'
 import AddToCart from './Component/SkiilsSection/AddToCart'
 import PricingSubscraption from './Component/Pages/PricingSubscraption'
@@ -31,8 +31,6 @@ function App() {
 
         <Route path='/tech-on-page' element={<TechOnPage />} />
 
-        {/* Create a cprse */}
-        <Route path='/create-course' element={<CreateCourse />} />
 
 
         {/* All Course details */}
@@ -41,6 +39,20 @@ function App() {
 
 
         <Route path='/add-cart' element={<AddToCart />} />
+
+
+
+
+
+
+
+
+
+        {/* Create a course
+            Admin Page
+         */}
+        <Route path='/create-course' element={<CreateCourse />} />
+
       </Routes>
       <Footer />
     </>

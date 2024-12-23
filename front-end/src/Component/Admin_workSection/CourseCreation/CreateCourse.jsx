@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const CreateCourse = ({ onAddCourse }) => {
@@ -8,19 +9,39 @@ const CreateCourse = ({ onAddCourse }) => {
         price: "",
         level: "",
         category: "",
-        video: "",
+        videos: "",
     });
+
+
+
+
+
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setCourse({ ...course, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (onAddCourse) {
-            onAddCourse(course);
+        const token = localStorage.getItem("token");
+        console.log(token, "token")
+
+        try {
+            const res = await axios.post(
+                "http://localhost:3000/api/course",
+                course,
+                {
+                    headers: {
+                        Authorization: `${token}`,
+                    },
+                }
+            ); console.log(res.data, "Course created successfully");
+        } catch (error) {
+            console.log("Error creating course:", error);
         }
+
         // Reset the form after submission
         setCourse({
             title: "",
@@ -29,9 +50,16 @@ const CreateCourse = ({ onAddCourse }) => {
             price: "",
             level: "",
             category: "",
-            video: "",
+            videos: "",
         });
     };
+
+
+
+
+
+
+
 
     return (
         <div className="max-w-[600px] mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
@@ -49,7 +77,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter course title"
-                        required
+                        
                     />
                 </div>
 
@@ -65,7 +93,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter course description"
                         rows="3"
-                        required
+                        
                     ></textarea>
                 </div>
 
@@ -81,7 +109,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter language"
-                        required
+                        
                     />
                 </div>
 
@@ -97,7 +125,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter course price"
-                        required
+                        
                     />
                 </div>
 
@@ -111,7 +139,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         value={course.level}
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
-                        required
+                        
                     >
                         <option value="">Select level</option>
                         <option value="Beginner">Beginner</option>
@@ -132,7 +160,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter category"
-                        required
+                        
                     />
                 </div>
 
@@ -143,12 +171,12 @@ const CreateCourse = ({ onAddCourse }) => {
                     </label>
                     <input
                         type="url"
-                        name="video"
-                        value={course.video}
+                        name="videos"
+                        value={course.videos}
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter video link"
-                        required
+                        
                     />
                 </div>
 
