@@ -29,6 +29,9 @@ const course = require('./Routes/course');
 const status = require('./Routes/status.route');
 const review = require('./Routes/review');
 const findUser = require('./Routes/findAllUser');
+const payment = require('./Routes/payment')
+const chatbot = require('./Routes/chatbots')
+
 
 
 
@@ -66,9 +69,16 @@ app.use('/api', status)
 app.use('/api', review);
 
 
-// fins the all user
-app.use('/api', findUser)
+// find the all user
+app.use('/api', findUser);
 
+
+
+// fins the all user
+app.use('/api', payment)
+
+
+app.use('/api', chatbot)
 
 
 app.listen(port, console.log(`Server is running on port no ${port}`));

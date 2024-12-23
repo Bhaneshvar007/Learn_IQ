@@ -13,6 +13,7 @@ import Include_All_Course from './Component/SkiilsSection/AllCourseDetails/Inclu
 import AddToCart from './Component/SkiilsSection/AddToCart'
 import PricingSubscraption from './Component/Pages/PricingSubscraption'
 import TechOnPage from './Component/Pages/TechOnPage'
+import Chatbot from './Component/Pages/Chatbot'
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
 
 
 
+        <Route path='/chatbot' element={<Chatbot />} />
 
 
 

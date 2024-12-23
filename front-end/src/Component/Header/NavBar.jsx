@@ -38,7 +38,7 @@ const NavBar = () => {
                 <div className='flex items-center gap-2 border border-zinc-400 p-2 rounded px-3 flex-grow max-w-md lg:max-w-[350px]'>
                     <IoSearch className='text-2xl text-zinc-600' />
                     <input
-                        className='border-0 outline-none w-full text-sm'
+                        className='border-0 outline-none w-full text-sm bg-gray-100 '
                         type="text"
                         placeholder='Search for anything...'
                     />

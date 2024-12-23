@@ -1,12 +1,73 @@
 import React, { useContext } from 'react'
 import Context from '../../../context'
+import axios from 'axios';
+import { loadStripe } from "@stripe/stripe-js";
+
+
+
+
+const stripePromise = loadStripe("pk_test_51QYQy9RwQI6fsucQQXGvVR83RNcSIPH8Mjf1XBQxXRhQnX02Tbgi09oc5FFXMXQxCJPxGElUfJVx2AXnu3YAZQ2j00uecnFEHr");
+
+
+
 
 const AddToCart = () => {
 
     let { cartData } = useContext(Context);
 
+
+
+
+    const handlePayment = async () => {
+        if (cartData.length === 0) {
+            alert("Your cart is empty. Add items to proceed.");
+            return;
+        }
+
+
+        // Calculate the total price
+        const totalAmount = cartData.reduce((sum, item) => sum + item.price, 0);
+     
+        
+        try {
+            const stripe = await stripePromise;
+
+            // Make a request to the backend to create a payment session
+            const response = await fetch("http://localhost:3000/api/payment", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  items: cartData,
+                  totalAmount,
+                }),
+              });
+
+            if (!response.ok) throw new Error("Failed to create payment session");
+
+            const session = await response.json();
+
+            // Redirect to Stripe Checkout
+            const result = await stripe.redirectToCheckout({
+                sessionId: session.id,
+            });
+
+            if (result.error) {
+                alert(result.error.message);
+            }
+        } catch (error) {
+            console.error("Payment failed:", error);
+            alert("Payment failed. Please try again.");
+        }
+    };
+
+
+
+
     return (
         <div className='flex flex-wrap'>
+
             {
                 cartData.map((val) => {
                     return (
@@ -22,7 +83,10 @@ const AddToCart = () => {
                                 controls
                                 className="w-full h-56 object-cover rounded-md border border-gray-300 mb-4"
                             />
-                            <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition-colors duration-200">
+                            <button
+                                className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition-colors duration-200"
+                                onClick={handlePayment}
+                            >
                                 Buy Now
                             </button>
                         </div>
