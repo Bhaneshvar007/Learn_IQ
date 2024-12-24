@@ -10,7 +10,7 @@ const Pricing = ({ filterData }) => {
 
 
     return (
-        <div className="min-h-screen  flex items-center justify-center z-[-1]">
+        <div className="min-h-screen  flex items-center justify-center z-50">
             <div className="bg-white shadow-md rounded-lg max-w-[400px] p-6">
                 {/* Course Header */}
                 <div className="flex flex-col items-center w-full">

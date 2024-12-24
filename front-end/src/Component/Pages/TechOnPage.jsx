@@ -27,7 +27,7 @@ const TechOnPage = () => {
         <div>
             <div className="min-w-full relative">
                 <img src='https://s.udemycdn.com/teaching/billboard-desktop-v4.jpg' className="h-[500px] object-cover" />
-                <div className="absolute top-20 left-32 bg-white p-6 rounded-lg shadow-lg w-96">
+                <div className="absolute top-20 left-32 bg-gray-100 p-6 rounded-lg shadow-lg w-96">
                     <h1 className="text-3xl font-semibold text-gray-800">Come teach with us</h1>
                     <p className="text-gray-600">Become an instructor and change lives — including your own</p>
                     <button className='bg-gray-800 text-white font-semibold px-10 py-2 rounded mt-5'>Get started</button>

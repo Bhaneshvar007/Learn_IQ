@@ -31,6 +31,7 @@ const review = require('./Routes/review');
 const findUser = require('./Routes/findAllUser');
 const payment = require('./Routes/payment')
 const chatbot = require('./Routes/chatbots')
+const uploadRoutes = require('./Routes/uploadeFile')
 
 
 
@@ -80,5 +81,8 @@ app.use('/api', payment)
 
 app.use('/api', chatbot)
 
+
+
+app.use('/api', uploadRoutes)
 
 app.listen(port, console.log(`Server is running on port no ${port}`));

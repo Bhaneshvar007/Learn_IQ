@@ -49,7 +49,7 @@ const TechOnSlide = () => {
                         {slides.map((slide, index) => (
                             <div key={index} className="min-w-full relative flex justify-center gap-10 items-center">
                                 <img src={slide.image} alt={slide.title} className="h-[300px] object-cover rounded" />
-                                <div className=" bg-white rounded-lg w-96 ">
+                                <div className=" bg-gray-100 rounded-lg w-96 ">
                                     <h1 className="text-3xl font-semibold text-gray-800 mb-5">{slide.name}</h1>
                                     <p className="text-gray-600">{slide.description}</p>
                                 </div>

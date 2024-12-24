@@ -40,13 +40,13 @@ const HomeSlide = () => {
 
     // Auto-slide effect using useEffect
     useEffect(() => {
-        const interval = setInterval(nextSlide, 4000); 
-        return () => clearInterval(interval); 
+        const interval = setInterval(nextSlide, 4000);
+        return () => clearInterval(interval);
     }, []);
 
     return (
         <div className="">
-            <div className="relative max-w-[1400px] mx-auto">
+            <div className="relative max-w-[1400px] mx-auto z-[-1]">
                 <div className="overflow-hidden">
                     <div className="flex transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

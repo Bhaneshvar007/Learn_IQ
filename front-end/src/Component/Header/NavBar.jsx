@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { TbWorld } from "react-icons/tb";
@@ -7,6 +7,7 @@ import { FaRegHeart } from "react-icons/fa";
 import UserMenu from './UserMenu';
 import Notifications from './Notifications';
 import Context from '../../../context';
+import VerticalMenu from './VerticalMenu';
 
 
 
@@ -18,22 +19,35 @@ const NavBar = () => {
     // console.log(token , "hello token");
 
 
-    let { cartData } = useContext(Context);
+    let { cartData, courseData } = useContext(Context);
 
 
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen((prevState) => !prevState);
+    };
 
 
     return (
-        <div className='max-w-[1400px] mx-auto px-4'>
+        <div className='max-w-[1400px] mx-auto px-4 '>
             <div className='flex items-center justify-between gap-5 border-b-2 h-[80px] z-50'>
 
                 <Link to={'/'} className='w-[91px] h-[40px] scale-150 pt-1'>
                     <img src="https://www.ballinamorecs.ie/wp-content/uploads/2014/07/elearning-logo.png" alt="Logo" />
                 </Link>
 
-                <div className='hidden lg:block cursor-pointer'>
-                    <p>Category</p>
+                <div className="relative cursor-pointer z-50">
+                    <p onClick={toggleMenu}>Category</p>
+
+                    {isMenuOpen && (
+                        <div className="absolute top-0 left-0 w-full">
+                            <VerticalMenu courseData={courseData }  setIsMenuOpen={setIsMenuOpen}/>
+                        </div>
+                    )}
                 </div>
+
 
                 <div className='flex items-center gap-2 border border-zinc-400 p-2 rounded px-3 flex-grow max-w-md lg:max-w-[350px]'>
                     <IoSearch className='text-2xl text-zinc-600' />

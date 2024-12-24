@@ -4,7 +4,6 @@ import Pricing from './Pricing'
 import CourseIncludes from './CourseIncludes'
 import CourseContent from './CourseContent'
 import ReviewsPage from './ReviewsPage'
-import InstructorsPage from './InstructorsPage'
 
 const Include_All_Course = () => {
     return (
@@ -12,7 +11,6 @@ const Include_All_Course = () => {
             <Header_Course />
             <CourseIncludes />
             <CourseContent />
-            <InstructorsPage />
             <ReviewsPage />
         </div>
     )

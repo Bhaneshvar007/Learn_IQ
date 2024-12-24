@@ -10,6 +10,7 @@ const CreateCourse = ({ onAddCourse }) => {
         level: "",
         category: "",
         videos: "",
+        resources: ""
     });
 
 
@@ -51,6 +52,7 @@ const CreateCourse = ({ onAddCourse }) => {
             level: "",
             category: "",
             videos: "",
+            resources: "",
         });
     };
 
@@ -77,7 +79,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter course title"
-                        
+
                     />
                 </div>
 
@@ -93,7 +95,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter course description"
                         rows="3"
-                        
+
                     ></textarea>
                 </div>
 
@@ -109,7 +111,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter language"
-                        
+
                     />
                 </div>
 
@@ -125,7 +127,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter course price"
-                        
+
                     />
                 </div>
 
@@ -139,7 +141,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         value={course.level}
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
-                        
+
                     >
                         <option value="">Select level</option>
                         <option value="Beginner">Beginner</option>
@@ -160,7 +162,7 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter category"
-                        
+
                     />
                 </div>
 
@@ -176,7 +178,23 @@ const CreateCourse = ({ onAddCourse }) => {
                         onChange={handleChange}
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Enter video link"
-                        
+
+                    />
+                </div>
+
+                {/* FIle Link */}
+                <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-700">
+                        Resources
+                    </label>
+                    <input
+                        type="file"
+                        name="resources"
+                        value={course.resources}
+                        onChange={handleChange}
+                        className="w-full p-2 border border-gray-300 rounded"
+                        placeholder="Choose the resources"
+
                     />
                 </div>
 

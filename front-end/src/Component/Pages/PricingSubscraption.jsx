@@ -13,7 +13,7 @@ const PricingSubscraption = () => {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Personal Plan */}
-                    <div className="bg-white rounded-lg shadow-lg p-6">
+                    <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-purple-500">
                         <h3 className="text-xl font-semibold mb-2">Personal Plan</h3>
                         <p className="text-sm text-gray-500 mb-4">For you (Individual)</p>
                         <p className="text-2xl font-bold mb-4">₹850 per month</p>
