@@ -8,7 +8,6 @@ let router = express.Router();
 router.post("/approve-course", checkAdminStatus('admin'), async (req, res) => {
     let { _id } = req.body;
 
-
     const course = await courseSchemaModel.findById({ _id });
     if (!course) {
         return res.status(404).json({ message: 'Course not found' });

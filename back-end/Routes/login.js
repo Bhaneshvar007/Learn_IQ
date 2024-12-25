@@ -15,10 +15,10 @@ router.post('/login', async (req, res) => {
         let checkPass = await bcrypt.compare(loginData.password, data.password);
         if (checkPass) {
             // if password is correct ganerate the token based on the their email and role
-            let token = jwt.sign({ id: data._id, email: data.email, role: data.role }, process.env.TOKEN, { expiresIn: '1h' });
+            let token = jwt.sign({ id: data._id, email: data.email, role: data.role }, process.env.TOKEN, { expiresIn: '24h' });
             // console.log(token);
 
-            res.send({ token });
+            res.send({ token, data });
         }
         else {
             res.send('Invailid passworddd !!')
@@ -28,7 +28,6 @@ router.post('/login', async (req, res) => {
         res.send("You don't have an any account")
     }
 });
-
 
 
 

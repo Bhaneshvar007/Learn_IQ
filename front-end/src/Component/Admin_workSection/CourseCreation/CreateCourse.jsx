@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateCourse = ({ onAddCourse }) => {
     const [course, setCourse] = useState({
@@ -14,7 +15,7 @@ const CreateCourse = ({ onAddCourse }) => {
     });
 
 
-
+    let navigate = useNavigate();
 
 
 
@@ -27,7 +28,6 @@ const CreateCourse = ({ onAddCourse }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem("token");
-        console.log(token, "token")
 
         try {
             const res = await axios.post(
@@ -38,7 +38,10 @@ const CreateCourse = ({ onAddCourse }) => {
                         Authorization: `${token}`,
                     },
                 }
-            ); console.log(res.data, "Course created successfully");
+            );
+            alert("Course created successfully");
+            navigate('/')
+
         } catch (error) {
             console.log("Error creating course:", error);
         }

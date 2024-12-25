@@ -6,7 +6,7 @@ import Subs from '../Pages/Subs'
 import Allcourses from '../Pages/Allcourses'
 import FeatureOf_Work from '../Pages/FeatureOf_Work'
 
-const Home = () => {
+const UserHome = () => {
     return (
         <div>
             <HomeSlide />
@@ -19,4 +19,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default UserHome

@@ -19,7 +19,7 @@ router.post('/course', isProtect, checkRoleFn(['admin', 'instructor']), async (r
             price: course.price,
             level: course.level,
             language: course.language,
-            status: course.status,
+            status: course.status,  
             videos: course.videos,
             resources: course.resources
         });

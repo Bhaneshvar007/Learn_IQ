@@ -24,10 +24,10 @@ router.post('/signup', async (req, res) => {
             role
         });
         await newUser.save();  // if user is successfully saved ganerating the token 
-        let token = jwt.sign({ id: newUser._id, email, role }, process.env.TOKEN, { expiresIn: '1h' });
+        let token = jwt.sign({ id: newUser._id, email, role }, process.env.TOKEN, { expiresIn: '24h' });
         // console.log(token);
 
-        res.send(`Acc created Sucessfully !!  token :  ${token}`)
+        res.send({ token })
     }
 
 })

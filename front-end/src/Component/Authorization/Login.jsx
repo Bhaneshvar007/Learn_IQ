@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -28,10 +28,15 @@ const Login = () => {
         try {
             let res = await axios.post('http://localhost:3000/api/login', input);
 
+
             if (res.data.token) {
                 localStorage.setItem('token', res.data.token);
-                getData();
+                localStorage.setItem('E-username', res.data.data.username);
+                localStorage.setItem('E-email', res.data.data.email);
+                localStorage.setItem('E-role', res.data.data.role);
                 alert("User Login Sucessfully !!");
+                usenavigate('/');
+                window.location.reload();
             }
 
             else {
@@ -47,22 +52,6 @@ const Login = () => {
 
 
     }
-
-
-
-
-
-
-
-    const getData = async () => {
-
-        const response = await axios.get('http://localhost:3000/api/login');
-        console.log(response);
-
-    };
-
-
-
 
 
     // Handle forgot password submission
@@ -184,33 +173,6 @@ const Login = () => {
                     </div>
 
 
-                    {/* Others Login  */}
-                    {/* <div className="mt-6">
-                        <p className="text-gray-600 text-center">Other log in options</p>
-                        <div className="flex items-center justify-center mt-2 space-x-4">
-                            <button className="bg-gray-100 p-2 rounded-full">
-                                <img
-                                    src="https://img.icons8.com/color/48/000000/google-logo.png"
-                                    alt="Google"
-                                    className="h-6 w-6"
-                                />
-                            </button>
-                            <button className="bg-gray-100 p-2 rounded-full">
-                                <img
-                                    src="https://img.icons8.com/fluency/48/000000/facebook-new.png"
-                                    alt="Facebook"
-                                    className="h-6 w-6"
-                                />
-                            </button>
-                            <button className="bg-gray-100 p-2 rounded-full">
-                                <img
-                                    src="https://static.vecteezy.com/system/resources/previews/020/964/377/non_2x/gmail-mail-icon-for-web-design-free-png.png"
-                                    alt="email"
-                                    className="h-6 w-6"
-                                />
-                            </button>
-                        </div>
-                    </div> */}
 
                     <div className="flex items-center justify-center bg-gray-100 py-4 mt-10" style={forget ? { visibility: "visible" } : { visibility: "hidden" }}>
                         <p className="text-gray-600">

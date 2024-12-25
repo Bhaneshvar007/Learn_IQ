@@ -28,7 +28,6 @@ function ContextProvider({ children }) {
 
 
 
-
     return (
         <Context.Provider value={{ courseData, setCourses, cartData, setCartData }}>
             {children}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 const SignUp = () => {
     let data = {
@@ -7,6 +7,8 @@ const SignUp = () => {
         email: '',
         password: '',
     }
+
+    let navigate = useNavigate();
 
     let [input, setInput] = useState(data);
 
@@ -20,10 +22,12 @@ const SignUp = () => {
         e.preventDefault();
         // console.log(input);
         try {
-            let res = await axios.post('http://localhost:3000/api/signup', input)
-            if (res.data.token) {
+            let res = await axios.post('http://localhost:3000/api/signup', input);
+             if (res.data.token) {
                 localStorage.setItem('token', res.data.token);
                 alert("User Login Sucessfully !!");
+                navigate('/')
+                window.location.reload();
             }
 
             else {

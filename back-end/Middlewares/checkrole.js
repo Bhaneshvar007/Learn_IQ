@@ -43,9 +43,9 @@ function checkRoleFn(role) {
                 next();
             }
         }
-    }
+    } 
 }
-
+ 
 
 // Check for approval and reject
 function checkAdminStatus(role) {

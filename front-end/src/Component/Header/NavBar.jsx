@@ -16,6 +16,7 @@ const NavBar = () => {
 
 
     let token = localStorage.getItem('token');
+    let role = localStorage.getItem('E-role');
     // console.log(token , "hello token");
 
 
@@ -43,7 +44,7 @@ const NavBar = () => {
 
                     {isMenuOpen && (
                         <div className="absolute top-0 left-0 w-full">
-                            <VerticalMenu courseData={courseData }  setIsMenuOpen={setIsMenuOpen}/>
+                            <VerticalMenu courseData={courseData} setIsMenuOpen={setIsMenuOpen} />
                         </div>
                     )}
                 </div>
@@ -69,10 +70,14 @@ const NavBar = () => {
                     <Link to='/tech-on-page'>
                         <li className='list-none text-zinc-700 cursor-pointer'>Teach on e-learn</li>
                     </Link>
-                    <Link to='/add-cart' className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'>
-                        <MdOutlineShoppingCart className='' />
-                        <sup className='bg-purple-700 text-center text-white font-bold text-sm px-[5px] py-0 rounded-full absolute left-6' >{cartData.length}</sup>
-                    </Link>
+
+                    {
+                        role == 'user' &&
+                        <Link to='/add-cart' className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'>
+                            <MdOutlineShoppingCart className='' />
+                            <sup className='bg-purple-700 text-center text-white font-bold text-sm px-[5px] py-0 rounded-full absolute left-6' >{cartData.length}</sup>
+                        </Link>
+                    }
                 </nav>
 
 
@@ -92,12 +97,7 @@ const NavBar = () => {
 
                 {token && (
                     <div className='flex items-center gap-5 ml-4'>
-                        {/* <Link className=' py-[8px] text-2xl'>
-                            <FaRegHeart />
-                        </Link> */}
-                        {/* <Link className='rounded p-[11px] cursor-pointer text-[25px] font-bold'>
-                            <Notifications />
-                        </Link> */}
+
                         <p className=''>
                             <UserMenu />
                         </p>
