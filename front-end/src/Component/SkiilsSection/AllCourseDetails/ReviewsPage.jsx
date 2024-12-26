@@ -1,5 +1,6 @@
 // Import React and Tailwind CSS
 import React from 'react';
+import Commnet_Review from './Commnet_Review';
 
 const ReviewsPage = () => {
     const reviews = [
@@ -17,27 +18,13 @@ const ReviewsPage = () => {
             rating: 4,
             comment: "Course is very comprehensive, which on the one hand is an asset, but on the other hand some chapters are very specialized and it is questionable that everyone needs really each and every use case and tool in the course…",
         },
-        {
-            id: 3,
-            name: "Soni S.",
-            time: "4 weeks ago",
-            rating: 5,
-            comment: "Both the professors are extremely keen on delivering an in-depth knowledge about Chat GPT. I am very happy to enroll for this course.",
-        },
-        {
-            id: 4,
-            name: "Tang C.",
-            time: "a month ago",
-            rating: 5,
-            comment: "An excellent course with good content about how to use AI tools to make our personal and professional life easy. I've learned a lot about how to use AI like Chat Gpt and other AI tools .",
-        },
     ];
 
     return (
-        <div className="min-h-screen bg-gray-100 -mt-28">
+        <div className="bg-gray-100 my-5 ml-8 ">
             <div className="max-w-[880px] ml-5 bg-white shadow-md rounded-lg p-6">
                 {/* Header Section */}
-                <div className="flex items-center justify-between mb-4 ">
+                <div className="flex items-center justify-between mb-5 ">
                     <h1 className="text-xl font-semibold flex items-center">
                         <span className="text-yellow-500 mr-2">★</span> 4.5 course rating
                     </h1>
@@ -79,11 +66,20 @@ const ReviewsPage = () => {
                 </div>
 
                 {/* Show All Reviews Button */}
-                <div className="text-center mt-6">
-                    <button className="bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700">
+                <div className="text-right mt-6">
+                    <button className=" text-blue-500 mr-1 rounded duration-500 hover:underline hover:text-blue-600">
                         Show all reviews
                     </button>
                 </div>
+            </div>
+
+
+
+            {/* Coomentn and reating box */}
+            <div className='max-w-[880px]  p-5 m-5 bg-white shadow-md rounded-lg'>
+                <h1 className='text-2xl font-semibold text-gray-600 mb-5'>Comment section</h1>
+                <Commnet_Review />
+
             </div>
         </div>
     );

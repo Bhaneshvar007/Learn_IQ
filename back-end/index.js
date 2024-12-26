@@ -21,7 +21,7 @@ const port = process.env.PORT || 8000;
 
 
 // Requiring all routes 
-const signup = require('./Routes/signup')
+const signup = require('./Routes/signup');
 const login = require('./Routes/login')
 const forget = require('./Routes/forget');
 const reset = require('./Routes/reset');
@@ -29,9 +29,11 @@ const course = require('./Routes/course');
 const status = require('./Routes/status.route');
 const review = require('./Routes/review');
 const findUser = require('./Routes/findAllUser');
-const payment = require('./Routes/payment')
-const chatbot = require('./Routes/chatbots')
-const uploadRoutes = require('./Routes/uploadeFile')
+const payment = require('./Routes/payment');
+const chatbot = require('./Routes/chatbots');
+const uploadRoutes = require('./Routes/uploadeFile');
+const updateUser = require('./Routes/updateUser');
+const profile = require('./Routes/profile');
 
 
 
@@ -83,6 +85,11 @@ app.use('/api', chatbot)
 
 
 
-app.use('/api', uploadRoutes)
+app.use('/api', uploadRoutes);
+
+app.use('/api', updateUser);
+
+app.use('/api', profile);
+
 
 app.listen(port, console.log(`Server is running on port no ${port}`));

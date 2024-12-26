@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Pricing from "./Pricing";
+import AddCourcesInCart from "./AddCourcesInCart";
 import Context from "../../../../context";
 import { useParams } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const Header_Course = () => {
                     <p className="mt-2">Created-Date : {new Date(filterData?.createdAt).toLocaleDateString()}</p>
                 </div>
                 <div className="absolute -top-5 right-2 ">
-                    <Pricing filterData={filterData} />
+                    <AddCourcesInCart filterData={filterData} />
                 </div>
             </div>
         </div>

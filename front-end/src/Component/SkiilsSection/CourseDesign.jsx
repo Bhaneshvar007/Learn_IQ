@@ -4,7 +4,7 @@ const CourseDesign = ({ course, index }) => {
     return (
         <div
             key={index}
-            className="min-w-[280px] w-[280px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden cursor-pointer"
+            className="min-w-[300px] w-[280px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden cursor-pointer"
         >
             <video
                 src={course.videos}

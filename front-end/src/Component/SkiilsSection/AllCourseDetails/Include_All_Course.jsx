@@ -1,6 +1,5 @@
 import React from 'react'
 import Header_Course from './Header_Course'
-import Pricing from './Pricing'
 import CourseIncludes from './CourseIncludes'
 import CourseContent from './CourseContent'
 import ReviewsPage from './ReviewsPage'

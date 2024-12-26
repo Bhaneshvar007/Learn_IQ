@@ -2,11 +2,22 @@
 import React, { useContext } from 'react';
 import Context from '../../../../context';
 
-const Pricing = ({ filterData }) => {
+const AddCourcesInCart = ({ filterData }) => {
 
 
 
     let { cartData, setCartData } = useContext(Context);
+    let token = localStorage.getItem('token');
+
+
+    function checkToken() {
+        if (token) {
+            setCartData([...new Set([...cartData, filterData])]);
+        }
+        else {
+            alert('Please Login the account !!')
+        }
+    }
 
 
     return (
@@ -45,11 +56,15 @@ const Pricing = ({ filterData }) => {
 
                     <div className="">
                         <p className="text-2xl font-semibold text-gray-700">Price : ${filterData?.price}</p>
+
                         <button className="w-full border border-purple-600 text-purple-600 py-3 rounded-lg mt-2 hover:bg-purple-50"
-                            onClick={() => setCartData([...new Set([...cartData, filterData])])}
+                            onClick={() =>
+                                checkToken()
+                            }
                         >
                             Add to cart
                         </button>
+
                     </div>
 
                     <p className="text-center text-sm text-gray-600 mt-4">
@@ -61,4 +76,4 @@ const Pricing = ({ filterData }) => {
     );
 };
 
-export default Pricing;
+export default AddCourcesInCart;

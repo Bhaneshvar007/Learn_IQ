@@ -7,7 +7,6 @@ import { FaRegHeart } from "react-icons/fa";
 import UserMenu from './UserMenu';
 import Notifications from './Notifications';
 import Context from '../../../context';
-import VerticalMenu from './VerticalMenu';
 
 
 
@@ -24,38 +23,30 @@ const NavBar = () => {
 
 
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen((prevState) => !prevState);
-    };
-
 
     return (
         <div className='max-w-[1400px] mx-auto px-4 '>
             <div className='flex items-center justify-between gap-5 border-b-2 h-[80px] z-50'>
 
-                <Link to={'/'} className='w-[91px] h-[40px] scale-150 pt-1'>
-                    <img src="https://www.ballinamorecs.ie/wp-content/uploads/2014/07/elearning-logo.png" alt="Logo" />
-                </Link>
+                <div className='flex  items-center gap-8'>
+                    <Link to={'/'} className='w-[91px] h-[40px] scale-150 pt-[5px]'>
+                        <img src="https://www.ballinamorecs.ie/wp-content/uploads/2014/07/elearning-logo.png" alt="Logo" />
+                    </Link>
 
-                <div className="relative cursor-pointer z-50">
-                    <p onClick={toggleMenu}>Category</p>
-
-                    {isMenuOpen && (
-                        <div className="absolute top-0 left-0 w-full">
-                            <VerticalMenu courseData={courseData} setIsMenuOpen={setIsMenuOpen} />
-                        </div>
-                    )}
+                    {/* <div className="relative cursor-pointer z-50">
+                        <Link to='/category'>
+                            <p>Category</p>
+                        </Link>
+                    </div> */}
                 </div>
 
 
                 <div className='flex items-center gap-2 border border-zinc-400 p-2 rounded px-3 flex-grow max-w-md lg:max-w-[350px]'>
                     <IoSearch className='text-2xl text-zinc-600' />
                     <input
-                        className='border-0 outline-none w-full text-sm bg-gray-100 '
+                        className='border-0 outline-none w-full text-sm bg-gray-100'
                         type="text"
-                        placeholder='Search for anything...'
+                        placeholder='Search for anything......'
                     />
                 </div>
 
@@ -75,7 +66,10 @@ const NavBar = () => {
                         role == 'user' &&
                         <Link to='/add-cart' className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'>
                             <MdOutlineShoppingCart className='' />
-                            <sup className='bg-purple-700 text-center text-white font-bold text-sm px-[5px] py-0 rounded-full absolute left-6' >{cartData.length}</sup>
+                            {
+                                cartData.length != 0 &&
+                                <sup className='text-purple-700 text-center text-sm font-bold px-[2px] py-0 rounded-full absolute left-6' >{cartData.length}</sup>
+                            }
                         </Link>
                     }
                 </nav>
@@ -89,7 +83,7 @@ const NavBar = () => {
                         <Link to={'/signup'}>
                             <button className='bg-[#2d2f31] w-[90px] rounded py-[8px] text-white text-sm'>Sign up</button>
                         </Link>
-                        <p className='bg-[#2d2f31] rounded p-[11px] text-white cursor-pointer'>
+                        <p className='bg-[#2d2f31] rounded p-[8.5px] text-white cursor-pointer'>
                             <TbWorld className='text-xl font-semibold' />
                         </p>
                     </div>

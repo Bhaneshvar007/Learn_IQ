@@ -1,27 +1,43 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Context from "../../../context";
 
 const UserMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null); // Reference for the menu container
+
+  let navigate = useNavigate();
+  let { cartData } = useContext(Context);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  let [isToken, setIsToken] = useState(localStorage.getItem('token'));
-
   const handleLogout = () => {
-    localStorage.setItem('token', '');
-    setIsToken('');// Update the state to reflect logout immediatel
-    setIsMenuOpen(false)
+    localStorage.setItem("token", "");
+    setIsMenuOpen(false);
+    navigate("/");
     window.location.reload();
   };
 
-  let username = localStorage.getItem('E-username')
-  let email = localStorage.getItem('E-email');
-  let role = localStorage.getItem('E-role');
+  let username = localStorage.getItem("E-username");
+  let email = localStorage.getItem("E-email");
+  let role = localStorage.getItem("E-role");
   let userLogo = username.charAt(0).toUpperCase() + email.charAt(0).toUpperCase();
 
+  // Close menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="relative">
@@ -41,50 +57,124 @@ const UserMenu = () => {
 
       {/* Dropdown Menu */}
       {isMenuOpen && (
-        <div className="absolute left-0 mt-2 w-72 bg-white border rounded-lg shadow-lg z-50">
+        <div
+          ref={menuRef}
+          className="fixed right-20 mt-1 w-72 bg-gray-50 shadow border rounded-lg z-[1]"
+        >
           <ul className="flex flex-col divide-y divide-gray-200">
-            <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer">My learning</li>
+            <li
+              className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer"
 
+            >
+              My learning
+            </li>
 
-            {
-              role == 'user' ? (
-                <div>
-                  <li className="px-4 py-[10px] flex justify-between hover:bg-gray-100 cursor-pointer">
-                    <span>My cart</span>
-                    <span className="bg-purple-600 text-white text-xs px-2 py-0.5 rounded-full">0</span>
+            {role === "user" ? (
+              <div>
+                <Link
+                  to="/add-cart"
+                  className="px-4 py-[10px] flex justify-between hover:bg-gray-100 cursor-pointer"
+
+                >
+                  <span>My cart</span>
+                  {
+                    cartData.length != 0 &&
+                    <span className="text-purple-600 font-bold px-2 py-0.5 rounded-full">
+                      {cartData.length}
+                    </span>
+                  }
+                </Link>
+                <Link
+                  to="/all-courses"
+
+                >
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                    Wachlist
                   </li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Wishlist</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Teach on Udemy</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Notifications</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Messages</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Account settings</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Payment methods</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Subscriptions</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Purchase history</li>
-                </div>
-              ) : (
-                <div>
-                  <Link to='/find-user'>
-                    <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">All Users</li>
-                  </Link>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Teach on Udemy</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Notifications</li>
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">Add cources</li>
-                </div>
-              )
-            }
+                </Link>
+                <Link
+                  to="/tech-on-page"
 
+                >
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                    Teach on Udemy
+                  </li>
+                </Link>
+                <li
+                  className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer"
 
+                >
+                  Notifications
+                </li>
 
+                <Link
+                  to="/PricingSubscraption"
+
+                >
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                    Subscriptions
+                  </li>
+                </Link>
+                <li
+                  className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer"
+
+                >
+                  Purchase history
+                </li>
+              </div>
+            ) : (
+              <div>
+                <Link
+                  to="/find-user"
+
+                >
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                    All Users
+                  </li>
+                </Link>
+                <Link
+                  to="/tech-on-page"
+
+                >
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                    Teach on Udemy
+                  </li>
+                </Link>
+                <li
+                  className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer"
+
+                >
+                  Notifications
+                </li>
+                <Link
+                  to="create-course"
+
+                >
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                    Add courses
+                  </li>
+                </Link>
+              </div>
+            )}
 
             <li className="px-4 py-[10px] flex justify-between hover:bg-gray-100">
               <span>Language</span>
               <span className="text-gray-500">English 🌐</span>
             </li>
-            <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer">Edit profile</li>
-            <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer"
+            <Link
+              to="/editprofile"
+
+            >
+              <li className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer">
+                Edit profile
+              </li>
+            </Link>
+            <li
+              className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer"
               onClick={handleLogout}
-            >Log out</li>
+            >
+              Log out
+            </li>
           </ul>
         </div>
       )}

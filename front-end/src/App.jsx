@@ -19,6 +19,9 @@ import PaymentCancel from './Component/Pages/PaymentCancel'
 import FileUpload from './Component/temp00000000000/FileUpload'
 import AdminHome from './Component/Home/AdminHome'
 import FindAlluser from './Component/Admin_workSection/FindAlluser'
+import Skills from './Component/SkiilsSection/Skills'
+import Allcourses from './Component/Pages/Allcourses'
+import EditProfile from './Component/Pages/EditProfile'
 
 function App() {
   const userRole = localStorage.getItem('E-role');
@@ -61,6 +64,10 @@ function App() {
         <Route path='/uploade' element={<FileUpload />} />
         <Route path='/create-course' element={<CreateCourse />} />
         <Route path='/find-user' element={<FindAlluser />} />
+        <Route path='/category' element={<Skills />} />
+        <Route path='/all-courses' element={<Allcourses />} />
+        <Route path='/editprofile' element={<EditProfile />} />
+
       </Routes>
 
 
