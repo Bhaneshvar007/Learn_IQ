@@ -65,10 +65,10 @@ const EditProfile = () => {
     };
 
     return (
-        <div className="flex items-center justify-center h-screen">
+        <div className="flex  h-screen">
             <div className="p-8 pt-12 flex gap-20 max-w-5xl w-full mb-10">
                 {/* Left Illustration */}
-                <div className="hidden md:flex items-center justify-center w-1/2">
+                {/* <div className="hidden md:flex items-center justify-center w-1/2">
                     <div className="relative">
                         <img
                             src="https://frontends.udemycdn.com/components/auth/desktop-illustration-step-1-x1.webp"
@@ -76,7 +76,7 @@ const EditProfile = () => {
                             className="h-[500px] w-[500px] scale-125 object-contain"
                         />
                     </div>
-                </div>
+                </div> */}
 
                 {/* Edit Profile Form */}
                 <div className="flex flex-col w-full md:w-1/2 ml-10">
@@ -105,7 +105,7 @@ const EditProfile = () => {
 
                         <button
                             type="submit"
-                            className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
+                            className="w-full mt-5 bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
                         >
                             Update
                         </button>

@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
 const AdminLayout = ({ children }) => {
     let Navigate = useNavigate();
-    
+
     let LogOut = () => {
         localStorage.removeItem("token");
         Navigate("/");
@@ -12,11 +13,15 @@ const AdminLayout = ({ children }) => {
     }
 
     return (
-        <div className="min-h-screen flex bg-gray-100">
+        <div className="min-h-screen  flex bg-gray-100">
             {/* Sidebar */}
             <aside className="w-64 bg-gray-700 text-white flex flex-col fixed top-0 left-0 h-full">
                 <div className="p-6">
-                    <h1 className="text-2xl font-bold mb-6">Admin Panel</h1>
+                    <div className="flex gap-2 items-center mb-6">
+                        <MdOutlineAdminPanelSettings className="text-3xl font-bold" />
+                        {/* <img className="w-10 h-10 object-cover" src="https://cdn-icons-png.flaticon.com/512/6277/6277478.png" alt="" /> */}
+                        <h1 className="text-2xl font-bold ">Admin Panel</h1>
+                    </div>
                     <nav className="space-y-4">
                         <Link
                             to="/"
@@ -29,7 +34,7 @@ const AdminLayout = ({ children }) => {
                         >
                             Create Course
                         </Link>
-                        <Link to="/admin/all-courses"
+                        <Link to="/admin/all-cources"
                             className="block py-2 px-4 rounded-lg hover:bg-gray-500"
                         >
                             Manage Courses
@@ -56,7 +61,7 @@ const AdminLayout = ({ children }) => {
             </aside>
 
             {/* Main Content Area */}
-            <main className="flex-1 p-10 ml-64"> {/* ml-64 ensures content starts after the sidebar */}
+            <main className="flex-1 p-1 ml-64"> {/* ml-64 ensures content starts after the sidebar */}
                 {children}
             </main>
         </div>
