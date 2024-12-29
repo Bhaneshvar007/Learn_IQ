@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/course', isProtect, checkRoleFn(['admin', 'instructor']), async (req, res) => {
     let course = req.body;
 
-    console.log(course, "lidhsf");
+    // console.log(course, "lidhsf");
 
     try {
         let newCourse = new courseSchemaModel({
@@ -19,7 +19,7 @@ router.post('/course', isProtect, checkRoleFn(['admin', 'instructor']), async (r
             price: course.price,
             level: course.level,
             language: course.language,
-            status: course.status,  
+            status: course.status,
             videos: course.videos,
             resources: course.resources
         });
@@ -67,9 +67,15 @@ router.post('/course', isProtect, checkRoleFn(['admin', 'instructor']), async (r
 });
 
 router.get('/get-course', async (req, res) => {
-
-    let newCourse = await courseSchemaModel.find();
+    let newCourse = await courseSchemaModel.find({ status: "Approved" });
+    // console.log(newCourse)
     res.send(newCourse);
+})
+
+router.get('/all-course', async (req, res) => {
+    let allCourse = await courseSchemaModel.find();
+    // console.log(newCourse)
+    res.send(allCourse);
 })
 
 module.exports = router

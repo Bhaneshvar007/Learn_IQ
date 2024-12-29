@@ -6,7 +6,8 @@ const Context = createContext();
 
 function ContextProvider({ children }) {
     const [courseData, setCourses] = useState([]);
-    const [cartData, setCartData] = useState([])
+    const [cartData, setCartData] = useState([]);
+    const [savedData, setSavedData] = useState([]);
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -24,12 +25,37 @@ function ContextProvider({ children }) {
 
 
 
+    // Load cart data from localStorage on component mount
+    useEffect(() => {
+        const savedCart = localStorage.getItem("cartData");
+        if (savedCart) {
+            try {
+                const parsedCart = JSON.parse(savedCart);
+                if (Array.isArray(parsedCart)) {
+                    setCartData(parsedCart);
+                } else {
+                    console.warn("Invalid cart data in localStorage. Resetting cart.");
+                    setCartData([]);
+                }
+            } catch (error) {
+                console.error("Error ", error);
+                setCartData([]);
+            }
+        } else {
+            setCartData([]);
+        }
+    }, []);
+
+
+
+
+
 
 
 
 
     return (
-        <Context.Provider value={{ courseData, setCourses, cartData, setCartData }}>
+        <Context.Provider value={{ courseData, setCourses, cartData, setCartData, savedData, setSavedData }}>
             {children}
         </Context.Provider>
     );

@@ -41,14 +41,14 @@ const Chatbot = () => {
 
             {/* Chatbot Window */}
             <div
-                    className={`fixed bottom-20 right-10 w-80 h-96 bg-white shadow-lg border-2 border-purple-500 rounded-lg z-40 transform transition-transform duration-500 ${isOpen ? "visible scale-100" : "hidden scale-90"
+                    className={`chatboat fixed bottom-20 right-10 w-80 h-96 bg-white shadow-lg border-2 border-purple-500 rounded-lg z-40 transform transition-transform duration-500 ${isOpen ? "visible scale-100" : "hidden scale-90"
                     }`}
             >
                 {isOpen && (
                     <>
                         {/* Chatbot Header */}
                         <div className="flex items-center justify-between bg-purple-600 text-white p-2 rounded-t">
-                            <h2 className="text-lg font-bold">Welcome to E-Learn AI</h2>
+                            <h2 className="text-lg font-bold">  Welcome to E-Learn AI ✨</h2>
                             <button
                                 onClick={() => setIsOpen(false)}
                                 className="text-white text-lg hover:text-gray-200"

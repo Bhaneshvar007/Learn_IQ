@@ -16,6 +16,7 @@ const UserMenu = () => {
   const handleLogout = () => {
     localStorage.setItem("token", "");
     setIsMenuOpen(false);
+    localStorage.setItem('E-role', 'user');
     navigate("/");
     window.location.reload();
   };
@@ -62,14 +63,14 @@ const UserMenu = () => {
           className="fixed right-20 mt-1 w-72 bg-gray-50 shadow border rounded-lg z-[1]"
         >
           <ul className="flex flex-col divide-y divide-gray-200">
-            <li
+            <Link to='/'
               className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer"
 
             >
               My learning
-            </li>
-
+            </Link>
             {role === "user" ? (
+
               <div>
                 <Link
                   to="/add-cart"
@@ -100,12 +101,7 @@ const UserMenu = () => {
                     Teach on Udemy
                   </li>
                 </Link>
-                <li
-                  className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer"
 
-                >
-                  Notifications
-                </li>
 
                 <Link
                   to="/PricingSubscraption"
@@ -115,12 +111,14 @@ const UserMenu = () => {
                     Subscriptions
                   </li>
                 </Link>
-                <li
-                  className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer"
+                <Link to='/save-cources'>
+                  <li
+                    className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer"
 
-                >
-                  Purchase history
-                </li>
+                  >
+                    Saved Item's
+                  </li>
+                </Link>
               </div>
             ) : (
               <div>
@@ -128,9 +126,9 @@ const UserMenu = () => {
                   to="/find-user"
 
                 >
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                  {/* <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
                     All Users
-                  </li>
+                  </li> */}
                 </Link>
                 <Link
                   to="/tech-on-page"
@@ -140,18 +138,29 @@ const UserMenu = () => {
                     Teach on Udemy
                   </li>
                 </Link>
-                <li
-                  className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer"
 
-                >
-                  Notifications
-                </li>
                 <Link
                   to="create-course"
 
                 >
                   <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
                     Add courses
+                  </li>
+                </Link>
+                <Link
+                  to="pending-cources"
+
+                >
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                    Pending courses
+                  </li>
+                </Link>
+                <Link
+                  to="all-cources"
+
+                >
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
+                    All Courses
                   </li>
                 </Link>
               </div>

@@ -1,27 +1,28 @@
 // Import React and Tailwind CSS
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Context from '../../../../context';
 
 const AddCourcesInCart = ({ filterData }) => {
-
-
-
     let { cartData, setCartData } = useContext(Context);
     let token = localStorage.getItem('token');
 
-
     function checkToken() {
         if (token) {
-            setCartData([...new Set([...cartData, filterData])]);
-        }
-        else {
-            alert('Please Login the account !!')
+            const updatedCart = [...new Set([...cartData, filterData])];
+
+            setCartData(updatedCart);
+            localStorage.setItem('cartData', JSON.stringify(updatedCart));
+
+            alert('Course added to cart successfully!');
+        } else {
+            alert('Please Login to your account!');
         }
     }
 
 
+
     return (
-        <div className="min-h-screen  flex items-center justify-center z-50">
+        <div className="min-h-screen flex items-center justify-center z-50">
             <div className="bg-white shadow-md rounded-lg max-w-[400px] p-6">
                 {/* Course Header */}
                 <div className="flex flex-col items-center w-full">
@@ -31,8 +32,6 @@ const AddCourcesInCart = ({ filterData }) => {
                         controls
                     />
                 </div>
-
-
 
                 {/* Subscription Section */}
                 <div className="mt-6">
@@ -46,7 +45,9 @@ const AddCourcesInCart = ({ filterData }) => {
                     <button className="w-full bg-purple-600 text-white py-3 rounded-lg mt-4 hover:bg-purple-700">
                         Start subscription
                     </button>
-                    <p className="text-center text-sm text-gray-600 mt-2">Starting at ₹850 per month<br />Cancel anytime</p>
+                    <p className="text-center text-sm text-gray-600 mt-2">
+                        Starting at ₹850 per month<br />Cancel anytime
+                    </p>
 
                     <div className="flex items-center justify-center mt-4">
                         <div className="w-full border-b border-gray-300"></div>
@@ -54,17 +55,15 @@ const AddCourcesInCart = ({ filterData }) => {
                         <div className="w-full border-b border-gray-300"></div>
                     </div>
 
-                    <div className="">
-                        <p className="text-2xl font-semibold text-gray-700">Price : ${filterData?.price}</p>
+                    <div>
+                        <p className="text-2xl font-semibold text-gray-700">Price: ${filterData?.price}</p>
 
-                        <button className="w-full border border-purple-600 text-purple-600 py-3 rounded-lg mt-2 hover:bg-purple-50"
-                            onClick={() =>
-                                checkToken()
-                            }
+                        <button
+                            className="w-full border border-purple-600 text-purple-600 py-3 rounded-lg mt-2 hover:bg-purple-50"
+                            onClick={checkToken}
                         >
                             Add to cart
                         </button>
-
                     </div>
 
                     <p className="text-center text-sm text-gray-600 mt-4">
@@ -72,7 +71,7 @@ const AddCourcesInCart = ({ filterData }) => {
                     </p>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import Context from '../../../context'
+
 
 const CourseDesign = ({ course, index }) => {
+
+    let { courseData, setSavedData, savedData } = useContext(Context);
+    function savedItemFn(id) {
+        // console.log(id);
+
+        let saveData = courseData.find((val) => val._id == id);
+        setSavedData([...savedData, saveData]);
+        alert("Data saved sucessfully !!")
+    }
+
+
     return (
         <div
             key={index}
@@ -43,9 +56,12 @@ const CourseDesign = ({ course, index }) => {
                     <span className="text-xs font-semibold text-white bg-[#F79B00] px-2 py-1 rounded">
                         {course.level}
                     </span>
-                    {/* <span className="text-xs font-semibold text-white bg-blue-500 px-2 py-1 rounded">
-                        Add-to-Cart
-                    </span> */}
+                    <span className="text-xs font-semibold text-white bg-gray-400 px-2 py-1 rounded" onClick={(e) => {
+                        savedItemFn(course._id)
+                        e.stopPropagation()
+                    }}>
+                        Save
+                    </span>
                 </div>
 
             </div>

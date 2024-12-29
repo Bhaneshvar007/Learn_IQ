@@ -6,7 +6,7 @@ const router = express.Router();
 router.post("/payment", async (req, res) => {
     try {
         const { items, totalAmount, title } = req.body;
-        console.log(items, "hjm");
+        // console.log(items, "hjm");
 
 
         const session = await stripe.checkout.sessions.create({

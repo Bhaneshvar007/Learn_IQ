@@ -31,7 +31,7 @@ const PaymentCancel = () => {
         </p>
         <button
           className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition"
-          onClick={() => window.location.href = "/checkout"}
+          onClick={() => window.location.href = "/add-cart"}
         >
           Try Again
         </button>

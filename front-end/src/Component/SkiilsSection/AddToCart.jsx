@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import Context from "../../../context";
 import { loadStripe } from "@stripe/stripe-js";
 import { Link } from "react-router-dom";
+import { FaTrash } from 'react-icons/fa';
 
 const stripePromise = loadStripe("pk_test_51QYQy9RwQI6fsucQQXGvVR83RNcSIPH8Mjf1XBQxXRhQnX02Tbgi09oc5FFXMXQxCJPxGElUfJVx2AXnu3YAZQ2j00uecnFEHr");
 
 const AddToCart = () => {
-    const { cartData } = useContext(Context);
+    const { cartData, setCartData } = useContext(Context);
 
     const handlePayment = async () => {
         if (cartData.length === 0) {
@@ -41,46 +42,71 @@ const AddToCart = () => {
         }
     };
 
+
+    const handleDelete = (id) => {
+        const updatedCart = cartData.filter(item => item._id != id); // Remove item with the given id
+        setCartData(updatedCart); // Update state
+        localStorage.setItem('cartData', JSON.stringify(updatedCart)); // Update localStorage
+    };
+
+
+
+
+
+
     return (
-        <div className="flex flex-wrap h-screen">
+        <div className="p-6 max-w-5xl mx-auto">
+            <h1 className="text-2xl font-bold mb-5">Shopping Cart</h1>
+
+
             {cartData.length === 0 ? (
-                <div className="flex  gap-5 mt-10">
-                    <p className="text-center text-gray-500 ml-10">
-                        Your cart is empty. Add items to see them here.
-                    </p>
-                    <Link to='/' className="text-blue-500 hover:underline">
-                        back to Home
+                <div className="text-center mt-10 h-screen">
+                    <p className="text-gray-500 mb-4">Your cart is empty. Add items to see them here.</p>
+                    <Link to="/" className="text-blue-500 hover:underline">
+                        Back to Home
                     </Link>
                 </div>
             ) : (
-                cartData.map((val, index) => (
-                    <div
-                        key={val.id || index}
-                        className="p-6 m-2 h-[480px] max-w-sm bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-                    >
-                        <h1 className="text-xl font-bold text-gray-800 mb-2">{val.title}</h1>
-                        <p className="text-gray-600 mb-2">{val.description}</p>
-                        <p className="text-sm text-gray-500 mb-4">{val.category}</p>
-                        <h2 className="text-lg font-semibold text-gray-700 mb-4">
-                            Price: <span className="text-green-600">${val.price}</span>
-                        </h2>
-                        {val.videos ? (
-                            <video
-                                src={val.videos}
-                                controls
-                                className="w-full h-56 object-cover rounded-md border border-gray-300 mb-4"
-                            />
-                        ) : (
-                            <p className="text-center text-gray-400 mb-4">No video available</p>
-                        )}
-                        <button
-                            className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition-colors duration-200"
-                            onClick={handlePayment}
-                        >
-                            Buy Now
-                        </button>
-                    </div>
-                ))
+                <div className="flex flex-wrap">
+                    {
+                        cartData.map((val, index) => (
+                            <div
+                                key={val.id || index}
+                                className="p-6 m-2 pb-5 w-full flex items-center gap-5 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 relative"
+                            >
+                                {/* Delete Icon */}
+                                <button
+                                    className="absolute top-2 right-2 text-gray-400 hover:text-gray-500"
+                                    onClick={() => handleDelete(val._id)} // handleDelete is a function to remove the item
+                                >
+                                    <FaTrash size={20} />
+                                </button>
+
+                                <img
+                                    className="h-20 object-cover rounded-md"
+                                    src="https://static.vecteezy.com/system/resources/thumbnails/046/437/255/small_2x/udemy-logo-on-a-white-square-app-icon-free-png.png"
+                                    alt="img"
+                                />
+
+                                <div className="flex flex-col flex-1">
+                                    <h1 className="text-xl font-bold text-gray-800 mb-2">{val.title}</h1>
+                                    <p className="text-gray-600 mb-2">{val.description}</p>
+                                    <h2 className="text-lg font-semibold text-gray-700 mb-4">
+                                        Price: <span className="text-green-600">${val.price}</span>
+                                    </h2>
+                                </div>
+
+                                <button
+                                    className="w-[150px] bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition-colors duration-200"
+                                    onClick={handlePayment}
+                                >
+                                    Buy Now
+                                </button>
+                            </div>
+
+                        ))
+                    }
+                </div>
             )}
         </div>
     );

@@ -34,6 +34,9 @@ const chatbot = require('./Routes/chatbots');
 const uploadRoutes = require('./Routes/uploadeFile');
 const updateUser = require('./Routes/updateUser');
 const profile = require('./Routes/profile');
+const order = require('./Routes/order');
+const deleteUser = require('./Routes/delete');
+const manageCource = require('./Routes/manageCource')
 
 
 
@@ -75,15 +78,10 @@ app.use('/api', review);
 // find the all user
 app.use('/api', findUser);
 
-
-
 // fins the all user
 app.use('/api', payment)
 
-
 app.use('/api', chatbot)
-
-
 
 app.use('/api', uploadRoutes);
 
@@ -91,5 +89,12 @@ app.use('/api', updateUser);
 
 app.use('/api', profile);
 
+app.use('/api', order);
+
+app.use('/api', deleteUser);
+
+
+// Ṃanage the course update and delete
+app.use('/api', manageCource);
 
 app.listen(port, console.log(`Server is running on port no ${port}`));

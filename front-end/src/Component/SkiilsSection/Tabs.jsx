@@ -7,7 +7,7 @@ const Tabs = ({ activeTab, tabs, setActiveTab }) => {
                 {tabs.map((tab) => (
                     <button
                         key={tab}
-                        className={`py-2 px-4 text-sm ${activeTab === tab
+                        className={`py-2 px-4 text-sm  ${activeTab === tab
                             ? "border-b-2 border-black text-black font-semibold capitalize "
                             : "text-gray-500 hover:text-black capitalize"
                             }`}

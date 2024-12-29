@@ -6,6 +6,7 @@ const SignUp = () => {
         username: '',
         email: '',
         password: '',
+        role: '',
     }
 
     let navigate = useNavigate();
@@ -23,8 +24,11 @@ const SignUp = () => {
         // console.log(input);
         try {
             let res = await axios.post('http://localhost:3000/api/signup', input);
-             if (res.data.token) {
+            if (res.data.token) {
                 localStorage.setItem('token', res.data.token);
+                localStorage.setItem('E-username', input.username);
+                localStorage.setItem('E-email', input.email);
+                localStorage.setItem('E-role', input.role);
                 alert("User Login Sucessfully !!");
                 navigate('/')
                 window.location.reload();
@@ -94,19 +98,22 @@ const SignUp = () => {
                                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
                             />
                         </div>
-                        <div className='flex '>
-                            <input
-                                type="checkbox"
-                                id="specialOffers"
-                                className="w-5 h-5 mr-2 mt-1 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
-                            />
-                            <label
-                                htmlFor="specialOffers"
-                                className="text-gray-600 text-sm leading-relaxed"
+
+                        <div>
+                            <label htmlFor="role" className="block text-gray-700 font-medium mb-2">Select Role</label>
+                            <select
+                                name="role"
+                                value={input.role}
+                                onChange={inputHandler}
+                                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
                             >
-                                Send me special offers, personalized recommendations, and learning tips.
-                            </label>
+                                <option value="user">user</option>
+                                <option value="instructor">instructor</option>
+                                <option value="admin">admin</option>
+                            </select>
                         </div>
+
+
                         <button
                             type="submit"
                             onClick={submitHandler}
@@ -115,33 +122,6 @@ const SignUp = () => {
                             Sign up
                         </button>
                     </form>
-
-                    {/* <div className="mt-6">
-                        <p className="text-gray-600 text-center">Continue with</p>
-                        <div className="flex items-center justify-center mt-2 space-x-4">
-                            <button className="bg-gray-100 p-2 rounded-full">
-                                <img
-                                    src="https://img.icons8.com/color/48/000000/google-logo.png"
-                                    alt="Google"
-                                    className="h-6 w-6"
-                                />
-                            </button>
-                            <button className="bg-gray-100 p-2 rounded-full">
-                                <img
-                                    src="https://img.icons8.com/fluency/48/000000/facebook-new.png"
-                                    alt="Facebook"
-                                    className="h-6 w-6"
-                                />
-                            </button>
-                            <button className="bg-gray-100 p-2 rounded-full">
-                                <img
-                                    src="https://img.icons8.com/ios-filled/50/000000/mac-os.png"
-                                    alt="Apple"
-                                    className="h-6 w-6"
-                                />
-                            </button>
-                        </div>
-                    </div> */}
 
 
 
