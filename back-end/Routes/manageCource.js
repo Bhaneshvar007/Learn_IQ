@@ -22,9 +22,33 @@ router.delete('/delete-course/:id', isProtect, checkAdminStatus(['admin']), asyn
 });
 
 
-router.put('/update-course', isProtect,  async (req, res) => {
-    let { course } = req.body
-    console.log(course)
+router.put('/update-course', isProtect, checkRoleFn(['admin', 'instructor']), async (req, res) => {
+    const courseData = req.body;
+
+    if (!courseData._id) {
+        return res.status(400).send({ success: false, message: "Course ID is required" });
+    }
+
+
+    try {
+        // Find and update the course by ID
+        const updatedCourse = await courseSchemaModel.findByIdAndUpdate(
+            courseData._id, // Use the course ID
+            courseData, // Update fields
+            { new: true } // Return the updated document
+        );
+
+        console.log(updatedCourse,"kjbdsf")
+
+        if (!updatedCourse) {
+            return res.status(404).send({ success: false, message: "Course not found" });
+        }
+
+        res.send({ success: true, message: "Course updated successfully", data: updatedCourse });
+    } catch (error) {
+        console.error("Error updating course:", error);
+        res.status(500).send({ success: false, message: "Internal server error", error: error.message });
+    }
 });
 
 

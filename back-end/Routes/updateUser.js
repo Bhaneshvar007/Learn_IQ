@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 
 router.put('/updateProfile', async (req, res) => {
-    const { username, email } = req.body; // Destructure input data
+    const { username, email, password } = req.body; // Destructure input data
     const token = req.headers.authorization?.split(" ")[1]; // Extract token from Authorization header
 
     if (!token) {

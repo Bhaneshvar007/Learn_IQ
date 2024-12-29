@@ -33,7 +33,10 @@ function App() {
 
   return (
     <div className='relative'>
-      <NavBar />
+      {
+        userRole === 'user' &&
+        <NavBar />
+      }
       <Routes>
         {userRole === 'user' ? (
           <Route path='/' element={<UserHome />} />
@@ -68,7 +71,7 @@ function App() {
         <Route path='/editprofile' element={<EditProfile />} />
         <Route path='/pending-cources' element={<PendingCourses />} />
         <Route path='/save-cources' element={<SavedData />} />
-        <Route path='/all-cources' element={<AllCourcesByAdmin />} />
+        <Route path='/admin/all-cources' element={<AllCourcesByAdmin />} />
         <Route path='/update-course/:id' element={<UpdateCourse />} />
       </Routes>
 

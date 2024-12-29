@@ -4,14 +4,17 @@ import { data, useNavigate } from 'react-router-dom';
 
 const AllCourcesByAdmin = () => {
     let [courses, setCourses] = useState([]);
-    useEffect(async () => {
-        try {
-            let res = await axios.get('http://localhost:3000/api/all-course');
-            setCourses(res.data);
-            console.log(res.data, "cources")
-        } catch (error) {
-            console.log("error", error);
+    useEffect(() => {
+        async function fetchCourses() {
+
+            try {
+                let res = await axios.get('http://localhost:3000/api/all-course');
+                setCourses(res.data);
+            } catch (error) {
+                console.log("error", error);
+            }
         }
+        fetchCourses();
     }, []);
 
 
@@ -23,7 +26,8 @@ const AllCourcesByAdmin = () => {
         navigate(`/update-course/${id}`);
     }
 
-    let token = localStorage.getItem("token")
+    let token = localStorage.getItem("token");
+
     // delete cource
     async function deleteCourse(id) {
         try {
@@ -45,7 +49,7 @@ const AllCourcesByAdmin = () => {
     return (
         <div className="max-w-[1200px] mx-auto p-6 bg-gray-100 min-h-screen">
             <h1 className="text-3xl font-bold ml-2 text-purple-700 mb-6">All Courses</h1>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 ">
                 {courses.map((course) => (
                     <div
                         key={course._id}

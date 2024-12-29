@@ -30,14 +30,18 @@ const UpdateCourse = () => {
     };
 
 
-    useEffect(async () => {
-        try {
-            let res = await axios.get('http://localhost:3000/api/all-course');
-            let newData = res.data.find((e) => e._id == id);
-            setCourse(newData);
-        } catch (error) {
-            console.log("error", error);
+    useEffect(() => {
+        async function fetchCourses() {
+
+            try {
+                let res = await axios.get('http://localhost:3000/api/all-course');
+                let newData = res.data.find((e) => e._id == id);
+                setCourse(newData);
+            } catch (error) {
+                console.log("error", error);
+            }
         }
+        fetchCourses();
     }, []);
 
 
@@ -47,10 +51,10 @@ const UpdateCourse = () => {
 
         try {
             await axios.put(`http://localhost:3000/api/update-course`, course, {
-                headers: { Authorization: `${token}`, },
+                headers: { Authorization: `${token}` },
             });
             alert('Course updated successfully!');
-            navigate('/all-courses'); // Navigate to course list
+            navigate('/all-cources'); // Navigate to course list
         } catch (error) {
             console.error('Error updating course:', error);
         }
