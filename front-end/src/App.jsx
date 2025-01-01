@@ -20,7 +20,7 @@ import AdminHome from './Component/Home/AdminHome';
 import FindAlluser from './Component/Admin_workSection/FindAlluser';
 import Skills from './Component/SkiilsSection/Skills';
 import Allcourses from './Component/Pages/Allcourses';
-import EditProfile from './Component/Pages/EditProfile';
+import EditProfile from './Component/Admin_workSection/EditProfile';
 import FileUpload from './Component/temp00000000000/FileUpload';
 import PendingCourses from './Component/Admin_workSection/PendingCourses';
 import SavedData from './Component/Pages/SavedData';
@@ -34,66 +34,66 @@ function App() {
 
   return (
     <div className='relative'>
-      <AdminLayout>
 
-        {
-          userRole === 'user' &&
-          <NavBar />
-        }
-        <Routes>
-          {userRole === 'user' ? (
-            <Route path='/' element={<UserHome />} />
-          ) : (
-            <Route path='/' element={<AdminHome />} />
-          )}
-
-          {
-            !token &&
-            <Route path='/login' element={<Login />} />
-          }
-
-          {
-            !token &&
-            <Route path='/signup' element={<SignUp />} />
-          }
-
-
-          <Route path='/api/reset-password/:token' element={<ForgetPassword />} />
-          <Route path='/e-business' element={<UdemyBusiness />} />
-          <Route path='/PricingSubscraption' element={<PricingSubscraption />} />
-          <Route path='/tech-on-page' element={<TechOnPage />} />
-          <Route path='/course-detail/:id' element={<Include_All_Course />} />
-          <Route path='/add-cart' element={<AddToCart />} />
-          <Route path='/uploade' element={<FileUpload />} />
-          <Route path='/create-course' element={<CreateCourse />} />
-          <Route path='/find-user' element={<FindAlluser />} />
-          <Route path='/PaymentSuccess' element={<PaymentSuccess />} />
-          <Route path='/PaymentCancel' element={<PaymentCancel />} />
-          <Route path='/category' element={<Skills />} />
-          <Route path='/all-courses' element={<Allcourses />} />
-          <Route path='/editprofile' element={<EditProfile />} />
-          <Route path='/pending-cources' element={<PendingCourses />} />
-          <Route path='/save-cources' element={<SavedData />} />
-          <Route path='/admin/all-cources' element={<AllCourcesByAdmin />} />
-          <Route path='/update-course/:id' element={<UpdateCourse />} />
-        </Routes>
-
-        {userRole === 'user' && (
-          <div className="fixed bottom-4 right-4">
-            <Chatbot />
-          </div>
+      {
+        userRole === 'user' &&
+        <NavBar />
+      }
+      <Routes>
+        {userRole === 'user' ? (
+          <Route path='/' element={<UserHome />} />
+        ) : (
+          <Route path='/' element={<AdminHome />} />
         )}
 
-        {/* Fixed Chatbot */}
-        {/* <div className="fixed bottom-4 right-4">
+        {
+          !token &&
+          <Route path='/login' element={<Login />} />
+        }
+
+        {
+          !token &&
+          <Route path='/signup' element={<SignUp />} />
+        }
+
+
+        <Route path='/api/reset-password/:token' element={<ForgetPassword />} />
+        <Route path='/e-business' element={<UdemyBusiness />} />
+        <Route path='/PricingSubscraption' element={<PricingSubscraption />} />
+        <Route path='/tech-on-page' element={<TechOnPage />} />
+        <Route path='/course-detail/:id' element={<Include_All_Course />} />
+        <Route path='/add-cart' element={<AddToCart />} />
+        <Route path='/uploade' element={<FileUpload />} />
+        <Route path='/create-course' element={<CreateCourse />} />
+        <Route path='/PaymentSuccess' element={<PaymentSuccess />} />
+        <Route path='/PaymentCancel' element={<PaymentCancel />} />
+        <Route path='/category' element={<Skills />} />
+        <Route path='/all-courses' element={<Allcourses />} />
+        <Route path='/editprofile' element={<EditProfile />} />
+        <Route path='/save-cources' element={<SavedData />} />
+
+        <Route path='/find-user' element={<FindAlluser />} />
+        <Route path='/pending-cources' element={<PendingCourses />} />
+        <Route path='/admin/all-cources' element={<AllCourcesByAdmin />} />
+        <Route path='/update-course/:id' element={<UpdateCourse />} />
+
+      </Routes>
+
+      {userRole === 'user' && (
+        <div className="fixed bottom-4 right-4">
+          <Chatbot />
+        </div>
+      )}
+
+      {/* Fixed Chatbot */}
+      {/* <div className="fixed bottom-4 right-4">
         <Chatbot />
       </div> */}
 
-        {userRole === 'user' && (
-          <Footer />
-        )
-        }
-      </AdminLayout>
+      {userRole === 'user' && (
+        <Footer />
+      )
+      }
 
     </div >
   )

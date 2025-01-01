@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import AdminLayout from '../Home/AdminLayout';
 
 const EditProfile = () => {
     let navigate = useNavigate();
@@ -64,8 +65,16 @@ const EditProfile = () => {
         }
     };
 
+
+
+
+    let role = localStorage.getItem('E-role');
+
     return (
         <div className="flex  h-screen">
+
+            <AdminLayout />
+
             <div className="p-8 pt-12 flex gap-20 max-w-5xl w-full mb-10">
                 {/* Left Illustration */}
                 {/* <div className="hidden md:flex items-center justify-center w-1/2">

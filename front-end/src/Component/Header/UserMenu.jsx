@@ -1,6 +1,16 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Context from "../../../context";
+import { MdOutlineBookmarkAdded } from "react-icons/md";
+import { MdOutlineSubscriptions } from "react-icons/md";
+import { FaCartPlus } from "react-icons/fa";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { MdOutlineLogout } from "react-icons/md";
+
+
+
+
+
 
 const UserMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,10 +74,11 @@ const UserMenu = () => {
         >
           <ul className="flex flex-col divide-y divide-gray-200">
             <Link to='/'
-              className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer"
+              className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer flex items-center justify-between"
 
             >
-              My learning
+              <span>My learning</span>
+              <MdKeyboardDoubleArrowRight className="text-xl" />
             </Link>
             {role === "user" ? (
 
@@ -77,13 +88,17 @@ const UserMenu = () => {
                   className="px-4 py-[10px] flex justify-between hover:bg-gray-100 cursor-pointer"
 
                 >
-                  <span>My cart</span>
-                  {
-                    cartData.length != 0 &&
-                    <span className="text-purple-600 font-bold px-2 py-0.5 rounded-full">
-                      {cartData.length}
-                    </span>
-                  }
+                  <div>
+                    <span>My cart</span>
+                    {
+                      cartData.length != 0 &&
+                      <span className="text-purple-600 font-bold px-2 py-0.5 rounded-full">
+                        {cartData.length}
+                      </span>
+                    }
+                  </div>
+
+                  <FaCartPlus />
                 </Link>
                 <Link
                   to="/all-courses"
@@ -98,7 +113,7 @@ const UserMenu = () => {
 
                 >
                   <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
-                    Teach on Udemy
+                    Teach on Learn
                   </li>
                 </Link>
 
@@ -107,16 +122,23 @@ const UserMenu = () => {
                   to="/PricingSubscraption"
 
                 >
-                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
-                    Subscriptions
+                  <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer flex items-center justify-between">
+                    <span>
+                      Subscriptions
+                    </span>
+                    <MdOutlineSubscriptions />
+
                   </li>
                 </Link>
                 <Link to='/save-cources'>
                   <li
-                    className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer"
+                    className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer flex items-center justify-between "
 
                   >
-                    Saved Item's
+                    <span>
+                      Saved Item's
+                    </span>
+                    <MdOutlineBookmarkAdded className="text-[18px]" />
                   </li>
                 </Link>
               </div>
@@ -135,7 +157,7 @@ const UserMenu = () => {
 
                 >
                   <li className="px-4 py-[10px] duration-500 hover:bg-gray-100 cursor-pointer">
-                    Teach on Udemy
+                    Teach on Learn
                   </li>
                 </Link>
 
@@ -179,10 +201,11 @@ const UserMenu = () => {
               </li>
             </Link>
             <li
-              className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer"
+              className="px-4 py-[10px] hover:bg-gray-100 cursor-pointer flex items-center justify-between"
               onClick={handleLogout}
             >
-              Log out
+              <span>Log out</span>
+              <MdOutlineLogout className="text-[18px]"/>
             </li>
           </ul>
         </div>

@@ -13,7 +13,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const AdminHome = () => {
 
-    let { courseData } = useContext(Context);
+    let { courseData } = useContext(Context);   
 
     let ApprovedData = courseData.filter((e) => e.status == 'Approved')
     let rejectData = courseData.filter((e) => e.status == 'Rejected')
@@ -78,8 +78,8 @@ const AdminHome = () => {
     return (
         <div className="relative bg-gray-500 min-h-screen">
             <AdminLayout />
-            <div className="ml-44 w-full mx-auto bg-gray-500"> {/* Ensures content is adjusted for the fixed sidebar */}
-                <div className="p-8 absolute top-0 " >
+            <div className=" w-full mx-auto bg-gray-500"> {/* Ensures content is adjusted for the fixed sidebar */}
+                <div className="p-8 absolute top-0 left-[400px] " >
                     {/* Header Section */}
                     <header className="text-center max-w-4xl mx-auto mb-12">
                         <h1 className="text-4xl sm:text-5xl font-bold text-blue-700 leading-tight">

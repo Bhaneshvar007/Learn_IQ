@@ -63,7 +63,7 @@ const NavBar = () => {
                     </Link>
 
                     {
-                        role == 'user' &&
+                        token &&
                         <Link to='/add-cart' className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'>
                             <MdOutlineShoppingCart className='' />
                             {

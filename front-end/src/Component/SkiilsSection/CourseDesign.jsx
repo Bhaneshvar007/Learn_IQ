@@ -1,5 +1,7 @@
-import React, { useContext } from 'react'
-import Context from '../../../context'
+import React, { useContext } from 'react';
+import Context from '../../../context';
+import { FaRegBookmark } from "react-icons/fa";
+
 
 
 const CourseDesign = ({ course, index }) => {
@@ -56,11 +58,11 @@ const CourseDesign = ({ course, index }) => {
                     <span className="text-xs font-semibold text-white bg-[#F79B00] px-2 py-1 rounded">
                         {course.level}
                     </span>
-                    <span className="text-xs font-semibold text-white bg-gray-400 px-2 py-1 rounded" onClick={(e) => {
+                    <span className=" font-bold  px-2 py-1 rounded" onClick={(e) => {
                         savedItemFn(course._id)
                         e.stopPropagation()
                     }}>
-                        Save
+                        <FaRegBookmark title='save item' />
                     </span>
                 </div>
 

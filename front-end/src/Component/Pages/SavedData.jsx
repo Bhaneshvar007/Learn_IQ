@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Context from '../../../context';
+import { Link } from 'react-router-dom';
 
 const SavedData = () => {
     const { savedData } = useContext(Context);
@@ -42,7 +43,12 @@ const SavedData = () => {
                     </div>
                 ))
             ) : (
-                <p className="text-gray-500 text-lg">No saved courses to display.</p>
+                <div className="text-center mt-20 h-screen mx-auto ">
+                    <p className="text-gray-500 mb-4">No saved courses to display.</p>
+                    <Link to="/" className="text-blue-500 hover:underline">
+                        Back to Home
+                    </Link>
+                </div>
             )}
         </div>
     );
