@@ -51,7 +51,7 @@ const AllCourcesByAdmin = () => {
         <div className='flex'>
             <AdminLayout />
             <div className="w-[1200px] p-6 bg-gray-100 min-h-screen -ml-10">
-                <h1 className="text-3xl font-bold ml-2 text-purple-700 mb-6">All Courses</h1>
+                <h1 className="text-3xl font-bold ml-2 text-gray-600 mb-6">All Courses</h1>
                 <div className="flex flex-col gap-6 ">
                     {courses.map((course) => (
                         <div

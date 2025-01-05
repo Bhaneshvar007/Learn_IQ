@@ -4,6 +4,10 @@ import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
+import { IoCodeSharp } from "react-icons/io5";
+import { MdCreateNewFolder } from "react-icons/md";
+
+
 
 
 
@@ -35,21 +39,23 @@ const AdminLayout = ({ children }) => {
             <aside className="w-64 bg-gray-700 text-white flex flex-col fixed top-0 left-0 h-full">
                 <div className="p-6">
                     <div className="flex gap-2 items-center mb-6">
-                        {/* <MdOutlineAdminPanelSettings className="text-3xl font-bold" /> */}
-                        <img className="w-10 h-10 object-cover" src="https://cdn-icons-png.flaticon.com/512/6277/6277478.png" alt="" />
+                        {/* <img className="w-10 h-10 object-cover" src="https://cdn-icons-png.flaticon.com/512/6277/6277478.png" alt="" /> */}
                         <h1 className="text-2xl font-bold ">Admin Panel</h1>
+                        <MdOutlineAdminPanelSettings className="text-3xl font-bold" />
                     </div>
                     <nav className="space-y-4">
                         <Link
                             to="/"
-                            className="block py-2 px-4 rounded-lg hover:bg-gray-500"
+                            className=" py-2 px-4 rounded-lg hover:bg-gray-500 flex items-center gap-2"
                         >
                             Dashboard
+                            <IoCodeSharp className="text-xl " />
                         </Link>
                         <Link to="/create-course"
-                            className="block py-2 px-4 rounded-lg hover:bg-gray-500"
+                            className="py-2 px-4 rounded-lg hover:bg-gray-500  flex items-center gap-2"
                         >
                             Create Course
+                            <MdCreateNewFolder/>
                         </Link>
                         <Link to="/admin/all-cources"
                             className="block py-2 px-4 rounded-lg hover:bg-gray-500"
@@ -78,10 +84,10 @@ const AdminLayout = ({ children }) => {
                         <div className="mt-4  p-4 rounded-lg -ml-5 mr-5 duration-500">
                             <button
                                 onClick={LogOut}
-                                className="w-full py-2 bg-blue-500 mt-4 mb-2 rounded-lg hover:bg-blue-600 flex items-center justify-center gap-3"
+                                className="w-full py-2 bg-blue-500 mt-4 mb-2 rounded-lg hover:bg-blue-600 flex items-center justify-center gap-5"
                             >
                                 <span>LogOut</span>
-                                <MdLogout  className=""/>
+                                <MdLogout className="" />
                             </button>
                             <Link
                                 to="/editprofile"

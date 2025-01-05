@@ -6,12 +6,29 @@ import Context from "../../../context";
 import axios from "axios";
 import AdminLayout from "../Home/AdminLayout";
 
+
 const PendingCourses = () => {
   let { courseData, setCourses } = useContext(Context); // Ensure context provides setCourses
   const token = localStorage.getItem("token");
 
-  // Filter only pending courses
-  const filteredCourses = courseData.filter((val) => val.status === "Pending");
+  let [courses, setCourseData] = useState([]);
+  useEffect(() => {
+    async function fetchCourses() {
+
+      try {
+        let res = await axios.get('http://localhost:3000/api/all-course');
+        setCourseData(res.data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+    fetchCourses();
+  }, []);
+
+  console.log('console.log : ', courseData);
+
+  // Filter only Pending courses
+  const filteredCourses = courses.filter((val) => val.status === "Pending");
 
 
   async function rejectFn(_id) {
@@ -67,9 +84,9 @@ const PendingCourses = () => {
       <AdminLayout />
       <div className="max-w-[1380px] mt-10">
         <h1 className="ml-16 font-semibold text-2xl text-gray-700">
-          Here're all course details (if admin can{" "}
+          Here're all course details (` if admin can{" "}
           <span className="text-green-600">approve</span> and{" "}
-          <span className="text-red-500">reject</span> the course)
+          <span className="text-red-500">reject</span> the course `)
         </h1>
 
         {filteredCourses.length === 0 ? (
